@@ -1,0 +1,19 @@
+{
+  "name": "flower-classification-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:api": "node src/api/index.js",
+    "dev:api": "nodemon src/api/index.js",
+    "dev:client": "cd src/client && npm run dev",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
+  }
+}
