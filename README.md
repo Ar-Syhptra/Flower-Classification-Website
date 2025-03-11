@@ -1,4 +1,4 @@
-# 🌸 Flower Classification with Machine Learning  
+# Flower Classification with Machine Learning  
 
 This project is a web application built with **React.js** and **Express.js**, utilizing **TensorFlow.js** to classify flowers based on uploaded images. The classification model is developed using **TensorFlow (Python)** and stored in **PostgreSQL** as the main database.  
 
