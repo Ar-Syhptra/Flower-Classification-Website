@@ -4,7 +4,7 @@ require("dotenv").config();
 const routes = require("./routes/flowerRoutes");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORTBE;
 
 app.use(cors());
 app.use(express.json());
