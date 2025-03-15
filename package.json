@@ -2,6 +2,11 @@
   "name": "flower-classification-website",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "src/api",
+    "src/client"
+  ],
   "scripts": {
     "start:api": "node src/api/index.js",
     "dev:api": "nodemon src/api/index.js",
