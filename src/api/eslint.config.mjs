@@ -4,18 +4,26 @@ import pluginJs from "@eslint/js";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
+    ignores: [
+      "node_modules/",
+      "dist/",
+      "coverage/",
+      ".env"
+    ]
+  },
+  {
     files: ["**/*.js"],
     languageOptions: {
-      sourceType: "commonjs", // CommonJS (require/export)
+      sourceType: "commonjs",
       ecmaVersion: "latest",
-      globals: { ...globals.browser, ...globals.node }, // Support global variables
+      globals: { ...globals.browser, ...globals.node },
     },
     rules: {
-      "semi": ["error", "always"], // Wajib pakai titik koma
-      "quotes": ["error", "double"], // Pakai kutip ganda
-      "no-unused-vars": "warn", // Peringatkan variabel tidak terpakai
-      "no-console": "off", // Izinkan console.log
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"],
+      "no-unused-vars": "warn",
+      "no-console": "off",
     },
   },
   pluginJs.configs.recommended,
-]
+];
