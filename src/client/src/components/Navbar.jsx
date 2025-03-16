@@ -50,7 +50,7 @@ function Navbar({ tittle, logo }) {
 
       {/* Hamburger Menu untuk Desktop */}
       <div className="navbar-center hidden md:flex ">
-        <ul className="menu menu-horizontal gap-8 font-poppins  text-[16px]">
+        <ul className="menu menu-horizontal gap-8 font-poppins text-[16px]">
           {navItems.map((item) => (
             <li key={item.id} className="p-2">
               {item.name}
@@ -58,6 +58,8 @@ function Navbar({ tittle, logo }) {
           ))}
         </ul>
       </div>
+
+      {/* Login dan Register Button untuk Desktop*/}
       <div className="navbar-end hidden md:flex items-center gap-1">
         <button className="btn btn-primary py-4 px-6">Login</button>
         <button className="btn btn-soft border-none py-4 px-6">Register</button>
