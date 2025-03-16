@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 class User {
   static async createUser(username, password) {
-    const hashPassword = await bcrypt.hash(password, 10)
+    const hashPassword = await bcrypt.hash(password, 10);
     const result = await db.query(
       "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id, username",
       [username, hashPassword]
@@ -12,8 +12,8 @@ class User {
   }
 
   static async findUsername(username) {
-    const result = await db.query("SELECT * FROM users WHERE username = $1", [username])
-    return result.rows[0]
+    const result = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+    return result.rows[0];
   }
 }
 
