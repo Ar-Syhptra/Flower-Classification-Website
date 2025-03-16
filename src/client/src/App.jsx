@@ -1,11 +1,12 @@
 // import { useState } from "react";
+import HomePage from "./page/HomePage";
 import "./assets/styles/globals.css";
 
 function App() {
 
   return (
     <>
-      <div></div>
+      <HomePage />
     </>
   );
 }
