@@ -1,4 +1,5 @@
 import HeroBackground from "../assets/img/watering-plant.svg";
+import { Link } from "react-router-dom";
 
 function HeroSection({ header, description }) {
   return (
@@ -15,9 +16,9 @@ function HeroSection({ header, description }) {
             {header}
           </h1>
           <p className="py-6 text-md text-white ">{description}</p>
-          <div className="pt-6">
-            <button className="btn btn-primary rounded-lg ">Pelajari</button>
-          </div>
+          <Link to="/classification" className="pt-6">
+            <button className="btn btn-primary rounded-lg">Pelajari</button>
+          </Link>
         </div>
       </div>
     </div>

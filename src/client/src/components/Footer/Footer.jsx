@@ -1,6 +1,7 @@
 import ListItem from "./ListItem";
+import Logo from "../../assets/img/flower-logo.svg";
 
-function Footer({ tittle, description, logo }) {
+function Footer() {
   return (
     <>
       <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
@@ -10,11 +11,12 @@ function Footer({ tittle, description, logo }) {
       </footer>
       <footer className="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
         <aside className="grid-flow-col items-center">
-          <img className="w-12 h-12" src={logo} alt="Logo" />
+          <img className="w-12 h-12" src={Logo} alt="Logo" />
           <p className="md:text-md">
-            {tittle}
+            FlorAI
             <br />
-            {description}
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
+            consequatur.
           </p>
         </aside>
         <nav className="md:place-self-center md:justify-self-end">
