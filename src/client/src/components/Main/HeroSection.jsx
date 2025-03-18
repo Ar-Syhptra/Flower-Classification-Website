@@ -1,4 +1,4 @@
-import HeroBackground from "../assets/img/watering-plant.svg";
+import HeroBackground from "../../assets/img/watering-plant.svg";
 import { Link } from "react-router-dom";
 
 function HeroSection({ header, description }) {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 function HamburgerMenu({ navItems }) {
   return (
@@ -40,12 +41,12 @@ function HamburgerMenu({ navItems }) {
           </li>
         ))}
         <div className="divider my-2"></div>
-        <li>
-          <button className="btn btn-primary w-full">Login</button>
-        </li>
-        <li>
-          <button className="btn btn-ghost w-full">Register</button>
-        </li>
+        <ul className="gap-2 flex">
+          <li>
+            <Button name="Login" />
+            <Button name="Register" />
+          </li>
+        </ul>
       </ul>
     </div>
   );

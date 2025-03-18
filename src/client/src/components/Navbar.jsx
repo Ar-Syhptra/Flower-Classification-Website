@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/img/flower-logo.svg";
 import navItems from "../data/navItems";
 import HamburgerMenu from "./HamburgerMenu";
+import Button from "./Button";
 
 function Navbar() {
   return (
@@ -41,12 +42,8 @@ function Navbar() {
 
       {/* Login dan Register Button untuk Desktop*/}
       <div className="navbar-end hidden md:flex text-center gap-2 ">
-        <button className="btn btn-primary btn-sm lg:btn-md hover:opacity-90 transition-opacity rounded-xl">
-          Login
-        </button>
-        <button className="btn btn-sm lg:btn-md transition-colors  rounded-xl">
-          Register
-        </button>
+        <Button name="Login" />
+        <Button name="Register" />
       </div>
     </nav>
   );

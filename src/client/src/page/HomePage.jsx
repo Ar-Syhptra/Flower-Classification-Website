@@ -1,7 +1,7 @@
-import HeroSection from "../components/HeroSection";
-import HowItWorks from "../components/HowItWorks";
+import HeroSection from "../components/Main/HeroSection";
+import DemoSection from "../components/Main/DemoSection";
+import HowItWorks from "../components/Main/HowItWorks";
 import AboutFlower from "../components/About/AboutFlower";
-import DemoSection from "../components/DemoSection";
 
 // Halaman Utama atau Landing Page
 function HomePage() {
