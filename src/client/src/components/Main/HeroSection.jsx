@@ -13,7 +13,7 @@ function HeroSection({ header, description }) {
           className="drop-shadow-md w-60 md:w-72 lg:w-80"
         />
         <div>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold font-poppins">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl  font-poppins font-bold">
             {header}
           </h1>
           <p className="py-6">{description}</p>

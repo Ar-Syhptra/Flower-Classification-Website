@@ -7,7 +7,8 @@
 /* root color */
 :root {
   --color-primary: #4895ef;
-  --color-secondary: #077187; 
+  --color-secondary: #011627; 
+  --color-snow-white:rgba(253,255,252);
 }
 
 /* Custom Font */

@@ -6,7 +6,7 @@ import Button from "./Button";
 
 function Navbar() {
   return (
-    <nav className="navbar p-4 px-6 sm:px-8 md:px-12 lg:px-20 sticky top-0 z-50 bg-base-100 shadow-xs">
+    <nav className="navbar p-4 px-6 sm:px-8 md:px-12 lg:px-20 sticky top-0 z-50 shadow-xs bg-base-100">
       {/* Logo Section */}
       <div className="navbar-start gap-3 flex items-center">
         <Link to="/">
@@ -16,8 +16,8 @@ function Navbar() {
               alt="Logo"
               className="w-12 md:w-12 md:h-12 lg:w-14 lg:h-14"
             />
-            <h1 className=" text-primary text-lg md:text-2xl lg:text-3xl">
-              FlorAI
+            <h1 className="font-bold text-primary text-2xl md:text-2xl lg:text-3xl">
+              
             </h1>
           </div>
         </Link>
