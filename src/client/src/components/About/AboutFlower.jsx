@@ -1,6 +1,6 @@
 function AboutFlower({ tittle, description }) {
   return (
-    <div className="min-h-screen grid place-items-center">
+    <div className="min-h-screen grid place-items-center bg-gradient-to-br from-primary to-secondary">
       <h2 className="text-2xl font-bold text-center">About Flower</h2>
       <div className="px-16 container mx-auto">
         <div className="flex flex-col items-start">

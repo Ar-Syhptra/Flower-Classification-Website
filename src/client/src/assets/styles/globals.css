@@ -4,22 +4,39 @@
   exclude: rootscrollgutter, rootcolor;
 }
 
-/* Custom Font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
-
-/* Custom Config DaisyUI */
-@utility btn {
-  @apply rounded-lg bg-primary text-white hover:bg-opacity-90 transition duration-200;
+/* root color */
+:root {
+  --color-primary: #4895ef;
+  --color-secondary: #077187; 
 }
+
+/* Custom Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Custom Config Tailwindcss */
-@theme {
-  --color-primary: #4895ef;
-  --color-secondary: #49ff68;
-
-  --font-poppins: "Poppins", sans-serif;
-  --font-quicksand: "Quicksand", sans-serif;
-  --font-rubik: "Rubik Mono One", monospace;
+@layer base{
+  html {
+    font-family: "Poppins", sans-serif;
+  }
 }
+
+@theme {
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #e5e7eb;
+  --color-base-400: #d1d5db;
+  --color-base-500: #9ca3af;
+  --color-base-600: #6b7280;
+  --color-base-700: #4b5563;
+  --color-base-800: #1f2937;
+  --color-base-900: #111827;
+
+  --font-rubik: "Rubik", sans-serif;
+  --fonst-poppins: "Poppins", sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+

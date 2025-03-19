@@ -2,9 +2,11 @@ import React from "react";
 
 function DemoSection() {
   return (
-    <section className="py-20 bg-base-100">
+    <section className="bg-base-100">
       <div className="container mx-auto px-10">
-        <h2 className="text-2xl font-bold text-center mb-10">Demo FlorAI</h2>
+        <h2 className="text-2xl font-bold text-center">Demo FlorAI</h2>
+      </div>
+
         <div className="flex flex-col items-center">
           <img
             src="https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg"
@@ -18,7 +20,6 @@ function DemoSection() {
             telah dikumpulkan.
           </p>
         </div>
-      </div>
     </section>
   );
 }

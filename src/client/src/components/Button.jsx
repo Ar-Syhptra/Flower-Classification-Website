@@ -1,6 +1,6 @@
-function Button({ name }) {
+function Button({ name,className }) {
   return (
-    <button className="btn sm:btn-sm md:btn-md xl:btn-md">
+    <button className={className}>
       {name}
     </button>
   );
