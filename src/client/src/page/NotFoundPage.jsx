@@ -1,13 +1,11 @@
-function NotFoundPage({ badRequest, notFound, serverError }) {
+function NotFoundPage() {
   return (
-    <>
-      <div>
-        <h1>Welcome To Not Found Page</h1>
-        <p>{badRequest}</p>
-        <p>{notFound}</p>
-        <p>{serverError}</p>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-8xl font-bold mb-4">404 </h1>
+        <p>Not Found</p>
       </div>
-    </>
+    </div>
   );
 }
 

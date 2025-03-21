@@ -2,9 +2,9 @@ import LoadingSpinner from "../components/Loading/LoadingSpinner";
 
 function AboutPage() {
   return (
-    <>
-      <h1>Ini Adalah Hello World</h1>
-    </>
+    <div className="min-h-screen flex justify-center items-center">
+      <h1>Ini Adalah AboutPage</h1>
+    </div>
   );
 }
 

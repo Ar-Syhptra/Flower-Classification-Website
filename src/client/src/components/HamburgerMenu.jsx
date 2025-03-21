@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import "../data/navItems";
 
 function HamburgerMenu({ navItems }) {
   return (
@@ -7,7 +7,7 @@ function HamburgerMenu({ navItems }) {
       <label
         tabIndex={0}
         role="button"
-        className="btn btn-ghost btn-circle hover:bg-primary/10 transition-colors"
+        className="btn btn-ghost btn-circle"
         aria-label="Menu"
       >
         <svg
@@ -28,25 +28,27 @@ function HamburgerMenu({ navItems }) {
 
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[51] mt-3 p-3 shadow-lg"
+        className="menu menu-md dropdown-content bg-base-100 rounded-lg z-[51] shadow-lg"
       >
         {navItems.map((item) => (
           <li key={item.id}>
             <Link
               to={item.path}
-              className="p-3 hover:bg-base-200 transition-colors rounded-lg"
+              className=" hover:bg-base-200 transition-colors rounded-lg"
             >
               {item.name}
             </Link>
           </li>
         ))}
         <div className="divider my-2"></div>
-        <ul className="gap-2 flex">
-          <li>
-            <Button name="Login" />
-            <Button name="Register" />
-          </li>
-        </ul>
+        <div className="gap-2 flex flex-col items-center">
+          <Link to="/login">
+            <button className="btn btn-primary text-base-100">Login</button>
+          </Link>
+          <Link to="/register">
+            <button className="btn btn-ghost text-primary">Register</button>
+          </Link>
+        </div>
       </ul>
     </div>
   );

@@ -1,14 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default;
-  exclude: rootscrollgutter, rootcolor;
-}
-
-/* root color */
-:root {
-  --color-primary: #4895ef;
-  --color-secondary: #011627; 
-  --color-snow-white:rgba(253,255,252);
 }
 
 /* Custom Font */
@@ -22,6 +14,18 @@
   html {
     font-family: "Poppins", sans-serif;
   }
+
+  :root{
+    --color-primary: rgb(72, 149, 239);
+    --color-secondary: rgb(1, 22, 39);
+    --color-snow-white: rgb(253, 255, 252);
+
+    --font-rubik: "Rubik", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-quicksand: "Quicksand", sans-serif;
+    --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+  }
+
 }
 
 @theme {
@@ -34,10 +38,6 @@
   --color-base-700: #4b5563;
   --color-base-800: #1f2937;
   --color-base-900: #111827;
-
-  --font-rubik: "Rubik", sans-serif;
-  --fonst-poppins: "Poppins", sans-serif;
-  --font-quicksand: "Quicksand", sans-serif;
-  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
 }
+
 
