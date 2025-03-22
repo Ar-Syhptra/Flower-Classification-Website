@@ -9,7 +9,7 @@ function HomePage() {
     <>
       <HeroSection
         header="Pelajari Berbagai Jenis Bunga dengan FlorAI"
-        description="FlorAI adalah sebuah aplikasi yang dapat membantu Anda mengidentifikasi berbagai jenis bunga dengan bantuan Teknologi Machine Learning"
+        description="FlorAI adalah aplikasi berbasis AI yang dapat membantu Anda mengklasifikasi berbagai jenis bunga secara instan menggunakan teknologi Machine Learning."
       />
       <DemoSection />
       <HowItWorks />

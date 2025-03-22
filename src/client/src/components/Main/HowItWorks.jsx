@@ -4,7 +4,7 @@ function HowItWorks() {
       {/* Title */}
       <div className="p-10 bg-base-100">
         <h2 className="text-3xl font-[1000] tracking-wide text-center text-base-900">
-          How It Works
+        Bagaimana Cara Kerjanya?
         </h2>
       </div>
 

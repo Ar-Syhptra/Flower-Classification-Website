@@ -21,7 +21,7 @@ function HeroSection({ header, description }) {
           </p>
           <Link to="/classification">
             <Button
-              name="Pelajari Sekarang"
+              name="Mulai Sekarang"
               className="btn md:btn-md lg:btn-lg btn-primary mt-6 py-3 text-base-100 rounded-lg"
             />
           </Link>
