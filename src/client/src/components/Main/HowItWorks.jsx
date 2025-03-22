@@ -1,5 +1,5 @@
 import React from "react";
-import { Upload, Cpu, FileText } from "lucide-react"; // Menggunakan ikon dari lucide-react
+import { Upload, Cpu, FileText } from "lucide-react";
 
 function HowItWorks() {
   const steps = [

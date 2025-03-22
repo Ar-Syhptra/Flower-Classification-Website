@@ -8,7 +8,6 @@ function HeroSection({ header, description }) {
 
   useEffect(() => {
     const rememberedUsername = localStorage.getItem("rememberedUsername");
-    console.log("Remembered Username:", rememberedUsername); // Debugging
     setHasRemembered(!!rememberedUsername);
   }, []);
 

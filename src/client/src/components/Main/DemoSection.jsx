@@ -1,5 +1,5 @@
 import React from "react";
-import DemoImage from "../../assets/img/florai-demo.png"; // Import gambar
+import DemoImage from "../../assets/img/florai-demo.png";
 
 function DemoSection() {
   return (
@@ -11,7 +11,6 @@ function DemoSection() {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10">
-        {/* Gambar bulat dengan 'rounded-full' */}
         <img 
           src={DemoImage} 
           alt="FlorAI Demo" 

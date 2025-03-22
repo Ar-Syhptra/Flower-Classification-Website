@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth";
-import { Eye, EyeOff, Lock, User } from "lucide-react"; // Import icons
+import { Eye, EyeOff, Lock, User } from "lucide-react";
 
 function LoginPage() {
   const navigate = useNavigate();
 
-  // Ambil rememberedUsername dari localStorage
   const rememberedUsername = localStorage.getItem("rememberedUsername") || "";
 
   const [username, setUsername] = useState(rememberedUsername);
