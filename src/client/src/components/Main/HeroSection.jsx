@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeroBackground from "../../assets/img/watering-plant.svg";
-import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 
 function HeroSection({ header, description }) {
+  const navigate = useNavigate();
+  const [hasRemembered, setHasRemembered] = useState(false);
+
+  useEffect(() => {
+    const rememberedUsername = localStorage.getItem("rememberedUsername");
+    console.log("Remembered Username:", rememberedUsername); // Debugging
+    setHasRemembered(!!rememberedUsername);
+  }, []);
+
+  const handleStart = () => {
+    if (hasRemembered) {
+      navigate("/classification");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="hero min-h-screen bg-gradient-to-br from-primary to-secondary">
       <div className="hero-content px-10 md:px-24 mb-10 lg:px-23 gap-2 md:gap-4 lg:gap-6 flex-col lg:flex-row-reverse">
@@ -19,12 +36,12 @@ function HeroSection({ header, description }) {
           <p className="text-lg md:text-xl lg:text-xl text-[#ebf2fa] mt-6 leading-relaxed tracking-normal max-w-xl">
             {description}
           </p>
-          <Link to="/classification">
-            <Button
-              name="Mulai Sekarang"
-              className="btn md:btn-md lg:btn-lg btn-primary mt-6 py-3 text-base-100 rounded-lg"
-            />
-          </Link>
+          <button
+            onClick={handleStart}
+            className="btn md:btn-md lg:btn-lg btn-primary mt-6 py-3 text-base-100 rounded-lg"
+          >
+            Mulai Sekarang
+          </button>
         </div>
       </div>
     </div>
