@@ -3,12 +3,12 @@ function HowItWorks() {
     <div className="items-center py-30">
       {/* Title */}
       <div className="p-10 bg-base-100">
-        <h2 className="text-3xl font-[1000] tracking-wide text-center text-base-900">
-        Bagaimana Cara Kerjanya?
+        <h2 className="text-2xl md:text-2xl lg:text-3xl font-[1000] tracking-wide text-center text-base-900">
+          Bagaimana Cara Kerjanya?
         </h2>
       </div>
 
-      <div className="flex flex-row justify-center items-center px-10 md:px-15 lg:px-20 pb-10 overflow-scroll">
+      <div className="flex flex-row justify-center items-center px-10 md:px-15 lg:px-20 pb-10 overflow-auto">
         {/* Cards */}
         <div className="flex flex-col md:flex-row lg:flex-row gap-10">
           <div className="flex w-80 flex-col gap-4">

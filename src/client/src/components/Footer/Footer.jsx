@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import Logo from "../../assets/img/flower-logo.svg";
 
 function Footer() {
   return (
     <div className="p-6 ">
-      <div className="flex justify-between px-40 items-center p-10">
-        <footer className="footer  bg-base-100 text-base-content">
+      <div className="flex justify-between px-10 md:px-30 lg:px-40 items-center p-10">
+        <footer className="footer bg-base-100 text-base-content">
           <nav className="footer footer-horizontal">
             <div>
               <h6 className="footer-title">About</h6>

@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./page/HomePage";
-import Navbar from "./components/Navbar";
-import AboutPage from "./page/AboutPage";
-import ContactPage from "./page/ContactPage";
+import Navbar from "./components/Navbar/Navbar";
 import NotFoundPage from "./page/NotFoundPage";
 import ClassificationPage from "./page/ClassificationPage";
 
@@ -15,8 +13,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
         <Route path="/classification" element={<ClassificationPage />} />
         <Route path="*" element={<NotFoundPage />} />"
       </Routes>

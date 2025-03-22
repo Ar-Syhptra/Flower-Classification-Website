@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 function HeroSection({ header, description }) {
   return (
-    <div className="hero min-h-screen bg-gradient-to-r from-primary to-secondary">
+    <div className="hero min-h-screen bg-gradient-to-br from-primary to-secondary">
       <div className="hero-content px-10 md:px-24 mb-10 lg:px-23 gap-2 md:gap-4 lg:gap-6 flex-col lg:flex-row-reverse">
         <img
           key={header}

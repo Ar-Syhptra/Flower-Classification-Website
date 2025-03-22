@@ -9,8 +9,12 @@ function Card({ cardTittle, cardDescription, cardImage, altImage }) {
         </figure>
         <div className="skeleton h-60 w-full"></div>
         <div className="card-body items-left text-left">
-          <h2 className="card-title text-2xl">{cardTittle}</h2>
-          <p className="text-md mt-6 text-lg">{cardDescription}</p>
+          <h2 className="card-title text-xl md:text-xl lg:text-2xl">
+            {cardTittle}
+          </h2>
+          <p className="text-md md:text-md lg:text-lg mt-6 text-md">
+            {cardDescription}
+          </p>
         </div>
       </div>
     </>

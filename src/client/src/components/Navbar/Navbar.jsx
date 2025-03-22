@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/img/flower-logo.svg";
-import navItems from "../data/navItems";
-import HamburgerMenu from "./HamburgerMenu";
-import Button from "./Button/Button";
+import Logo from "../../assets/img/flower-logo.svg";
+import Button from "../Button/Button";
 
 function Navbar() {
   return (
@@ -18,23 +16,12 @@ function Navbar() {
 
       {/* Hamburger Menu untuk Mobile */}
       <div className="navbar-end md:hidden">
-        <HamburgerMenu navItems={navItems} />
-      </div>
-
-      {/* Menu Desktop */}
-      <div className="navbar-center hidden md:flex">
-        <ul className="menu-horizontal gap-10 rounded-lg">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <Link
-                to={item.path}
-                className="hover:text-primary transition-all text-md md:text-md lg:text-lg font-[600] text-base-900"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Link to="/login">
+          <Button
+            name="Login"
+            className="btn btn-primary md:btn-md lg:btn-lg  text-base-100 rounded-lg"
+          />
+        </Link>
       </div>
 
       {/* Login dan Register Button untuk Desktop*/}
