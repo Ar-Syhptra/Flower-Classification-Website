@@ -13,16 +13,17 @@ function HeroSection({ header, description }) {
           className="drop-shadow-md w-60 md:w-72 lg:w-80"
         />
         <div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-[1000] tracking-wide mb-6 leading-tight text-base-900">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-[1000] tracking-wide mb-6 leading-tight text-base-100">
             {header}
           </h1>
-          <p className="text-lg md:text-xl lg:text-xl text-gray-300 mt-6 leading-relaxed tracking-normal max-w-xl">
+          <p className="text-lg md:text-xl lg:text-xl text-[#ebf2fa] mt-6 leading-relaxed tracking-normal max-w-xl">
             {description}
           </p>
           <Link to="/classification">
             <Button
               name="Pelajari Sekarang"
-              className="btn md:btn-md lg:btn-lg btn-primary mt-6 py-3 text-base-100 rounded-lg"
+              className="btn md:btn-md lg:btn-lg btn-primary mt-6 text-base-100 rounded-lg tracking-tight hover:bg-white hover:text-base-900 ease-in-out duration-300"
+              src="https://img.icons8.com/material/24/FFFFFF/circled-right-2--v1.png"
             />
           </Link>
         </div>
