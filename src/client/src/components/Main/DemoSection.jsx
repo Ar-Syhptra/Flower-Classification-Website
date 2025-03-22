@@ -1,23 +1,31 @@
 import React from "react";
+import DemoImage from "../../assets/img/florai-demo.png"; // Import gambar
 
 function DemoSection() {
   return (
-    <div className="min-h-80 flex flex-col md:grid-cols-1 lg:grid-cols-1 gap-6 p-4 ">
-      <div className="pt-10 bg-base-100">
-        <h2 className="text-2xl md:text-2xl lg:text-3xl font-[1000] text-center text-base-900 tracking-wide">
+    <div className="min-h-80 flex flex-col gap-6 p-4 py-10">
+      <div className="bg-base-100">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-base-900 tracking-wide mb-8">
           Apa Itu FlorAI?
         </h2>
       </div>
 
-      <div className="flex flex-row justify-center items-center gap-10">
-        <div className="skeleton w-5xl h-30 rounded-full md:w-2xl md:h-54 lg:w-80 lg:h-80"></div>
-        <p className="max-w-xl text-md md:text-md lg:text-xl">
-          FlorAI adalah aplikasi berbasis Artificial Intelligence (AI) yang
-          dirancang untuk mengklasifikasi berbagai jenis bunga dengan cepat dan
-          akurat. Dengan teknologi Machine Learning, FlorAI mampu mengenali
-          bunga hanya dari sebuah gambar dan memberikan informasi lengkap
-          tentang spesiesnya.
-        </p>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10">
+        {/* Gambar bulat dengan 'rounded-full' */}
+        <img 
+          src={DemoImage} 
+          alt="FlorAI Demo" 
+          className="w-48 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80 rounded-full shadow-lg object-cover mb-6 md:mb-0"
+        />
+        <div className="max-w-xl">
+          <p className="text-sm md:text-base lg:text-lg text-center md:text-left">
+            FlorAI adalah aplikasi berbasis Artificial Intelligence (AI) yang
+            dirancang untuk mengklasifikasi berbagai jenis bunga dengan cepat dan
+            akurat. Dengan teknologi Machine Learning, FlorAI mampu mengenali
+            bunga hanya dari sebuah gambar dan memberikan informasi lengkap
+            tentang spesiesnya.
+          </p>
+        </div>
       </div>
     </div>
   );
