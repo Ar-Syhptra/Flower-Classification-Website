@@ -16,9 +16,10 @@
   }
 
   :root {
-    --color-primary: #072ac8;
-    --color-secondary: #affc41;
+    --color-primary: rgb(7, 42, 200);
+    --color-secondary: #50ffb1;
     --color-snow-white: rgb(253, 255, 252);
+    --color-gray: rgb(209, 213, 219);
 
     --font-rubik: "Rubik", sans-serif;
     --font-poppins: "Poppins", sans-serif;

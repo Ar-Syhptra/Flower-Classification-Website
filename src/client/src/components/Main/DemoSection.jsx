@@ -2,7 +2,7 @@ import React from "react";
 
 function DemoSection() {
   return (
-    <div className="min-h-80 flex flex-col md:flex-row lg:flex-col gap-10 pb-20 p-4 ">
+    <div className="min-h-80 flex flex-col md:flex-col lg:flex-col gap-10 pb-20 p-4 ">
       <div className="pt-10 bg-base-100">
         <h2 className="text-3xl font-[1000] text-center text-base-900 tracking-wide">
           What is FlorAI?
