@@ -28,7 +28,7 @@ function Footer() {
 
               <a
                 href=""
-                className="flex gap-1 link link-hover text-blue-700 font-bold"
+                className="flex gap-1 link link-hover text-base-800 font-bold"
               >
                 <img
                   src="https://img.icons8.com/material/24/batch-assign.png"

@@ -6,7 +6,7 @@ import Button from "./Button/Button";
 
 function Navbar() {
   return (
-    <nav className="navbar p-2 px-6 sm:px-8 md:px-20 lg:px-30 sticky top-0 z-50 shadow-xs backdrop-blur-md bg-base-100/90">
+    <nav className="navbar p-2 px-6 sm:px-8 md:px-20 lg:px-30 sticky top-0 z-50 shadow-md backdrop-blur-md bg-base-100/90">
       {/* Logo Section */}
       <div className="navbar-start gap-3 flex items-center">
         <Link to="/">

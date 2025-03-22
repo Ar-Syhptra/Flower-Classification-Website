@@ -4,7 +4,7 @@ function AboutFlower() {
   return (
     <div className="py-10 bg-gradient-to-br from-primary to-secondary">
       <div className="flex justify-center text-center py-10">
-        <h2 className="text-3xl font-[1000] tracking-wide text-base-900">
+        <h2 className="text-3xl font-[1000] tracking-wide text-base-100">
           About Flower
         </h2>
       </div>
