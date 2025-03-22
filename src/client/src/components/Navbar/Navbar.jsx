@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/img/flower-logo.svg";
 import Button from "../Button/Button";
+import HamburgerMenu from "../HamburgerMenu";
 
 function Navbar() {
   return (
@@ -16,12 +17,7 @@ function Navbar() {
 
       {/* Hamburger Menu untuk Mobile */}
       <div className="navbar-end md:hidden">
-        <Link to="/login">
-          <Button
-            name="Login"
-            className="btn btn-primary md:btn-md lg:btn-lg  text-base-100 rounded-lg"
-          />
-        </Link>
+        <HamburgerMenu />
       </div>
 
       {/* Login dan Register Button untuk Desktop*/}

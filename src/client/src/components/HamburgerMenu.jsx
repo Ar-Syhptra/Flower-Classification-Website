@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../data/navItems";
 
-function HamburgerMenu({ navItems }) {
+function HamburgerMenu() {
   return (
     <div className="dropdown dropdown-end">
       <label
@@ -30,17 +30,6 @@ function HamburgerMenu({ navItems }) {
         tabIndex={0}
         className="menu menu-md dropdown-content bg-base-100 rounded-lg z-[51] shadow-lg"
       >
-        {navItems.map((item) => (
-          <li key={item.id}>
-            <Link
-              to={item.path}
-              className="btn btn-ghost hover:bg-base-200 rounded-lg text-black"
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-        <div className="divider my-2"></div>
         <div className="flex flex-col items-center gap-1">
           <Link to="/login">
             <button className="btn btn-primary text-base-100 rounded-lg px-12">

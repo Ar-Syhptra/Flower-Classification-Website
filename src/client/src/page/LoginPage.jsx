@@ -54,19 +54,23 @@ function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30 p-4">
       <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md">
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Selamat Datang</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+            Selamat Datang
+          </h2>
           <p className="text-gray-600 mt-2">Masuk ke akun FlorAI Anda</p>
         </div>
-        
+
         {error && (
           <div className="bg-red-50 text-red-600 p-3 rounded-md mb-4 text-sm flex items-center">
             <span className="mr-1">⚠️</span> {error}
           </div>
         )}
-        
+
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-gray-700 font-medium mb-1">Username</label>
+            <label className="block text-gray-700 font-medium mb-1">
+              Username
+            </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-gray-400" />
@@ -81,9 +85,11 @@ function LoginPage() {
               />
             </div>
           </div>
-          
+
           <div>
-            <label className="block text-gray-700 font-medium mb-1">Password</label>
+            <label className="block text-gray-700 font-medium mb-1">
+              Password
+            </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
@@ -109,7 +115,7 @@ function LoginPage() {
               </button>
             </div>
           </div>
-          
+
           <div className="flex items-center">
             <input
               id="remember"
@@ -118,11 +124,14 @@ function LoginPage() {
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
             />
-            <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
+            <label
+              htmlFor="remember"
+              className="ml-2 block text-sm text-gray-700"
+            >
               Ingat saya
             </label>
           </div>
-          
+
           <button
             type="submit"
             disabled={loading}
@@ -131,12 +140,12 @@ function LoginPage() {
             {loading ? "Memproses..." : "Masuk"}
           </button>
         </form>
-        
+
         <div className="mt-6 text-center text-sm">
           <p>
             Belum punya akun?{" "}
-            <button 
-              onClick={() => navigate("/register")} 
+            <button
+              onClick={() => navigate("/register")}
               className="text-primary hover:text-primary/80 font-medium"
             >
               Daftar sekarang
