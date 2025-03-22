@@ -1,11 +1,11 @@
 import HeroBackground from "../../assets/img/watering-plant.svg";
 import { Link } from "react-router-dom";
-import Button from "../Button";
+import Button from "../Button/Button";
 
 function HeroSection({ header, description }) {
   return (
-    <div className="hero min-h-screen">
-      <div className="hero-content px-10 md:px-28 lg:px-30 gap-2 md:gap-4 lg:gap-30 flex-col lg:flex-row-reverse pb-20 ">
+    <div className="hero min-h-screen bg-gradient-to-tl from-primary to-secondary">
+      <div className="hero-content px-10 md:px-24 mb-10 lg:px-23 gap-2 md:gap-4 lg:gap-6 flex-col lg:flex-row-reverse ">
         <img
           key={header}
           src={HeroBackground}
@@ -13,12 +13,17 @@ function HeroSection({ header, description }) {
           className="drop-shadow-md w-60 md:w-72 lg:w-80"
         />
         <div>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl  font-poppins font-bold">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-[1000] tracking-wide mb-6 leading-tight text-base-800">
             {header}
           </h1>
-          <p className="py-6">{description}</p>
+          <p className="text-lg md:text-xl lg:text-xl text-base-900 mt-6 leading-relaxed tracking-normal max-w-xl">
+            {description}
+          </p>
           <Link to="/classification">
-            <Button name="Pelajari Sekarang" className="btn btn-primary text-base-100"/>
+            <Button
+              name="Pelajari Sekarang"
+              className="btn md:btn-md lg:btn-lg btn-primary mt-6 py-3 text-base-100 rounded-lg"
+            />
           </Link>
         </div>
       </div>

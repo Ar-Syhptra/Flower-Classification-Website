@@ -34,19 +34,23 @@ function HamburgerMenu({ navItems }) {
           <li key={item.id}>
             <Link
               to={item.path}
-              className=" hover:bg-base-200 transition-colors rounded-lg"
+              className="btn btn-ghost hover:bg-base-200 rounded-lg text-black"
             >
               {item.name}
             </Link>
           </li>
         ))}
         <div className="divider my-2"></div>
-        <div className="gap-2 flex flex-col items-center">
+        <div className="flex flex-col items-center gap-1">
           <Link to="/login">
-            <button className="btn btn-primary text-base-100">Login</button>
+            <button className="btn btn-primary text-base-100 rounded-lg px-12">
+              Login
+            </button>
           </Link>
           <Link to="/register">
-            <button className="btn btn-ghost text-primary">Register</button>
+            <button className="btn btn-ghost text-primary rounded-lg px-10">
+              Register
+            </button>
           </Link>
         </div>
       </ul>

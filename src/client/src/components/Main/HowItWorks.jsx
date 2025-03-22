@@ -1,62 +1,37 @@
 function HowItWorks() {
   return (
-    <section className="bg-base-200 py-20">
-      <div className="container mx-auto px-10">
-        <h2 className="md:text-2xl text-xl font-bold text-center mb-10">
-          Bagaimana cara kerjanya?
+    <div className="items-center py-30">
+      {/* Title */}
+      <div className="p-10 bg-base-100">
+        <h2 className="text-3xl font-[1000] tracking-wide text-center text-base-900">
+          How It Works
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <div className="card bg-base-100 shadow-sm">
-            <figure>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg"
-                alt="leaf"
-                className="w-full h-40 object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Pengumpulan Data</h2>
-              <p>
-                Kami mengumpulkan data bunga dari berbagai sumber, seperti hasil
-                riset, data dari internet, dan kontribusi dari komunitas.
-              </p>
-            </div>
+      </div>
+
+      <div className="flex flex-row justify-center items-center px-10 md:px-15 lg:px-20 pb-10 overflow-scroll">
+        {/* Cards */}
+        <div className="flex flex-col md:flex-row lg:flex-row gap-10">
+          <div className="flex w-80 flex-col gap-4">
+            <div className="skeleton h-42 w-full"></div>
+            <div className="skeleton h-5 w-28"></div>
+            <div className="skeleton h-5 w-full"></div>
+            <div className="skeleton h-5 w-full"></div>
           </div>
-          <div className="card bg-base-100 shadow-sm">
-            <figure>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg"
-                alt="robot"
-                className="w-full h-40 object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Pelatihan Model</h2>
-              <p>
-                Kami menggunakan model machine learning untuk mempelajari
-                pola-pola dari data bunga yang telah dikumpulkan.
-              </p>
-            </div>
+          <div className="flex w-80 flex-col gap-4">
+            <div className="skeleton h-42 w-full"></div>
+            <div className="skeleton h-5 w-28"></div>
+            <div className="skeleton h-5 w-full"></div>
+            <div className="skeleton h-5 w-full"></div>
           </div>
-          <div className="card bg-base-100 shadow-sm">
-            <figure>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg"
-                alt="robot"
-                className="w-full h-40 object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Prediksi</h2>
-              <p>
-                Setelah model selesai dilatih, kami menggunakan model tersebut
-                untuk memprediksi jenis bunga berdasarkan foto yang diupload.
-              </p>
-            </div>
+          <div className="flex w-80 flex-col gap-4">
+            <div className="skeleton h-42 w-full"></div>
+            <div className="skeleton h-5 w-28"></div>
+            <div className="skeleton h-5 w-full"></div>
+            <div className="skeleton h-5 w-full"></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

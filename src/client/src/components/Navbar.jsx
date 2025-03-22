@@ -2,23 +2,16 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/img/flower-logo.svg";
 import navItems from "../data/navItems";
 import HamburgerMenu from "./HamburgerMenu";
-import Button from "./Button";
+import Button from "./Button/Button";
 
 function Navbar() {
   return (
-    <nav className="navbar p-4 px-6 sm:px-8 md:px-12 lg:px-20 sticky top-0 z-50 shadow-xs bg-base-100">
+    <nav className="navbar p-2 px-6 sm:px-8 md:px-20 lg:px-30 sticky top-0 z-50 shadow-xs backdrop-blur-md bg-base-100/90">
       {/* Logo Section */}
       <div className="navbar-start gap-3 flex items-center">
         <Link to="/">
           <div className="flex items-center gap-2">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="w-12 md:w-12 md:h-12 lg:w-14 lg:h-14"
-            />
-            <h1 className="font-bold text-primary text-2xl md:text-2xl lg:text-3xl">
-              
-            </h1>
+            <img src={Logo} alt="Logo" className="w-12 md:w-18 lg:w-20" />
           </div>
         </Link>
       </div>
@@ -33,7 +26,10 @@ function Navbar() {
         <ul className="menu-horizontal gap-10 rounded-lg">
           {navItems.map((item) => (
             <li key={item.id}>
-              <Link to={item.path} className="hover:text-primary transition-all">
+              <Link
+                to={item.path}
+                className="hover:text-primary transition-all text-md md:text-md lg:text-lg font-[600] text-base-900"
+              >
                 {item.name}
               </Link>
             </li>
@@ -42,12 +38,18 @@ function Navbar() {
       </div>
 
       {/* Login dan Register Button untuk Desktop*/}
-      <div className="navbar-end hidden md:flex text-center">
+      <div className="navbar-end hidden md:flex text-center gap-1">
         <Link to="/login">
-          <Button name="Login" className="btn btn-primary text-white" />
+          <Button
+            name="Login"
+            className="btn btn-primary md:btn-md lg:btn-lg  text-base-100 rounded-lg"
+          />
         </Link>
         <Link to="/register">
-          <Button name="Register" className="text-primary px-4 hover:bg-base-400 btn btn-ghost" />
+          <Button
+            name="Register"
+            className="btn btn-outline btn-primary md:btn-md lg:btn-lg hover:text-base-100 rounded-lg"
+          />
         </Link>
       </div>
     </nav>

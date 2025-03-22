@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./page/HomePage";
-import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar";
 import AboutPage from "./page/AboutPage";
 import ContactPage from "./page/ContactPage";
@@ -8,6 +7,7 @@ import NotFoundPage from "./page/NotFoundPage";
 import ClassificationPage from "./page/ClassificationPage";
 
 import "./assets/styles/globals.css";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
