@@ -4,20 +4,26 @@ import { Upload, Cpu, FileText } from "lucide-react";
 function HowItWorks() {
   const steps = [
     {
-      icon: <Upload className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-green-600" />,
+      icon: (
+        <Upload className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-green-600" />
+      ),
       number: "1️⃣",
       title: "Unggah Gambar",
       description: "Unggah gambar bunga yang ingin kamu identifikasi.",
     },
     {
-      icon: <Cpu className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-blue-600" />,
+      icon: (
+        <Cpu className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-blue-600" />
+      ),
       number: "2️⃣",
       title: "Proses AI",
       description:
         "Proses AI akan menganalisis gambar dengan model machine learning.",
     },
     {
-      icon: <FileText className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-purple-600" />,
+      icon: (
+        <FileText className="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 text-purple-600" />
+      ),
       number: "3️⃣",
       title: "Dapatkan Hasil",
       description: "Dapatkan hasil beserta informasi tentang bunga tersebut.",
@@ -47,7 +53,9 @@ function HowItWorks() {
                 <div className="text-lg font-bold mb-1">
                   {step.number} {step.title}
                 </div>
-                <p className="text-center text-sm text-gray-700">{step.description}</p>
+                <p className="text-center text-gray-700 text-sm md:text-md lg:text-lg">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
@@ -65,7 +73,9 @@ function HowItWorks() {
                 <div className="text-lg md:text-xl font-bold mb-2 text-center">
                   {step.number} {step.title}
                 </div>
-                <p className="text-center text-gray-700 text-sm md:text-base">{step.description}</p>
+                <p className="text-center text-gray-700 text-sm md:text-md lg:text-lg">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>

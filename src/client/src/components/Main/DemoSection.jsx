@@ -11,18 +11,18 @@ function DemoSection() {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10">
-        <img 
-          src={DemoImage} 
-          alt="FlorAI Demo" 
+        <img
+          src={DemoImage}
+          alt="FlorAI Demo"
           className="w-48 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80 rounded-full shadow-lg object-cover mb-6 md:mb-0"
         />
         <div className="max-w-xl">
-          <p className="text-sm md:text-base lg:text-lg text-center md:text-left">
+          <p className="text-sm md:text-md lg:text-lg text-center md:text-left">
             FlorAI adalah aplikasi berbasis Artificial Intelligence (AI) yang
-            dirancang untuk mengklasifikasi berbagai jenis bunga dengan cepat dan
-            akurat. Dengan teknologi Machine Learning, FlorAI mampu mengenali
-            bunga hanya dari sebuah gambar dan memberikan informasi lengkap
-            tentang spesiesnya.
+            dirancang untuk mengklasifikasi berbagai jenis bunga dengan cepat
+            dan akurat. Dengan teknologi Machine Learning, FlorAI mampu
+            mengenali bunga hanya dari sebuah gambar dan memberikan informasi
+            lengkap tentang spesiesnya.
           </p>
         </div>
       </div>

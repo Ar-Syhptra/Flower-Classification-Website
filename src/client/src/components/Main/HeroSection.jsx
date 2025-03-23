@@ -29,10 +29,10 @@ function HeroSection({ header, description }) {
           className="drop-shadow-md w-60 md:w-72 lg:w-80"
         />
         <div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-[1000] tracking-wide mb-6 leading-tight text-base-100">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-[1000] tracking-tight mb-6 leading-tight text-base-100">
             {header}
           </h1>
-          <p className="text-lg md:text-xl lg:text-xl text-[#ebf2fa] mt-6 leading-relaxed tracking-normal max-w-xl">
+          <p className="text-md md:text-lg lg:text-xl text-[#ebf2fa] mt-6 leading-relaxed tracking-normal max-w-xl">
             {description}
           </p>
           <button

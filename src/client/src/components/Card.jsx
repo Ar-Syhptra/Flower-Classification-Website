@@ -6,7 +6,7 @@ function Card({ cardTittle, cardDescription }) {
           <h2 className="card-title text-xl md:text-xl lg:text-2xl text-center underline">
             {cardTittle}
           </h2>
-          <p className="text-md md:text-md lg:text-lg mt-4">
+          <p className="text-sm md:text-md lg:text-lg mt-4">
             {cardDescription}
           </p>
         </div>
