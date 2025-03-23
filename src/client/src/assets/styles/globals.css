@@ -19,8 +19,6 @@
 
   :root {
     --color-primary: rgb(7, 42, 200);
-    --font-quicksand: "Quicksand", sans-serif;
-
     --color-secondary: #50ffb1;
     --color-snow-white: rgb(253, 255, 252);
     --color-gray: rgb(209, 213, 219);
