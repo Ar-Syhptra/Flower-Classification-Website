@@ -2,6 +2,7 @@ import HeroSection from "../components/Main/HeroSection";
 import DemoSection from "../components/Main/DemoSection";
 import HowItWorks from "../components/Main/HowItWorks";
 import AboutFlower from "../components/About/AboutFlower";
+import Footer from "../components/Footer/Footer";
 
 // Halaman Utama atau Landing Page
 function HomePage() {
@@ -19,6 +20,7 @@ function HomePage() {
             Rosaceae. Bunga mawar memiliki banyak macam warna, seperti merah,
             pink, kuning, putih, dan lainnya."
       />
+      <Footer />
     </>
   );
 }
