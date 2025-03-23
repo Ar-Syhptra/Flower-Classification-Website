@@ -39,7 +39,7 @@ function LoginPage() {
           localStorage.removeItem("rememberedUsername");
         }
 
-        navigate("/classification"); // Redirect ke home
+        navigate("/classification");
       } else {
         setError(res.message || "Login gagal, silakan coba lagi");
       }
