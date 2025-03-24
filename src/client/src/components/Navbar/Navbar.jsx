@@ -9,14 +9,10 @@ function Navbar() {
       {/* Logo Section */}
       <div className="navbar-start gap-3 flex items-center">
         <Link to="/">
-          <div className="flex items-center">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="w-13 sm:w-14 md:w-16 lg:w-18"
-            />
-            <h1 className="flex items-center text-lg md:text-xl lg:text-2xl text-primary font-sans font-bold tracking-tight">
-              FLOR.AI
+          <div className="flex items-center gap-2">
+            <img src={Logo} alt="Logo" className="w-12 md:w-18 lg:w-20" />
+            <h1 className="text-lg md:text-2xl lg:text-3xl text-primary font-noto-sans font-bold tracking-wide">
+              FlorAI
             </h1>
           </div>
         </Link>
