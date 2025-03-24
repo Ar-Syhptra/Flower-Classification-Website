@@ -79,7 +79,6 @@ function LoginPage() {
                 type="text"
                 className="w-full pl-10 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Masukkan username"
-                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
