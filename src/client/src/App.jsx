@@ -1,12 +1,11 @@
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./page/HomePage";
-import Navbar from "./components/Navbar/Navbar";
-import NotFoundPage from "./page/NotFoundPage";
-import ClassificationPage from "./page/ClassificationPage";
-import RegisterPage from "./page/RegisterPage";
-import LoginPage from "./page/LoginPage";
 import "./assets/styles/globals.css";
-import Footer from "./components/Footer/Footer";
+import HomePage from "./page/HomePage";
+import LoginPage from "./page/LoginPage";
+import RegisterPage from "./page/RegisterPage";
+import NotFoundPage from "./page/NotFoundPage";
+import Navbar from "./components/Navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
+import ClassificationPage from "./page/ClassificationPage";
 
 function App() {
   return (
