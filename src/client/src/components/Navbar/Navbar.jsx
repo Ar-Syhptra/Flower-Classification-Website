@@ -7,11 +7,15 @@ function Navbar() {
   return (
     <nav className="navbar px-6 sm:px-8 md:px-20 lg:px-30 fixed z-50 shadow-sm backdrop-blur-sm bg-base-100/95">
       {/* Logo Section */}
-      <div className="navbar-start gap-3 flex items-center">
+      <div className="navbar-start flex items-center ">
         <Link to="/">
-          <div className="flex items-center gap-2">
-            <img src={Logo} alt="Logo" className="w-12 md:w-18 lg:w-20" />
-            <h1 className="text-lg md:text-2xl lg:text-3xl text-primary font-noto-sans font-bold tracking-wide">
+          <div className="flex items-center justify-center">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="w-12 sm:w-14 md:w-16 lg:w-18"
+            />
+            <h1 className="text-md text-center md:text-2xl lg:text-3xl text-primary font-noto font-bold">
               FlorAI
             </h1>
           </div>

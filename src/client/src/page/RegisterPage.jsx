@@ -38,7 +38,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30 pt-20">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30 pt-22">
       <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
