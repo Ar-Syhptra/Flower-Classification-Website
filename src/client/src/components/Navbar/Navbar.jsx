@@ -12,7 +12,7 @@ function Navbar() {
           <div className="flex items-center gap-2">
             <img src={Logo} alt="Logo" className="w-12 md:w-18 lg:w-20" />
             <h1 className="text-lg md:text-2xl lg:text-3xl text-primary font-noto-sans font-bold tracking-wide">
-              FLOR.AI
+              FlorAI
             </h1>
           </div>
         </Link>
