@@ -5,51 +5,114 @@ import time
 import os
 import requests
 import base64
+import json
 
-flower    = "lavender"
-folder    = f"lavendula_{flower}"
-query     = "contoh bunga lavender"
-count     = 20
-scroll    = 5
+# --------------------------------------------------------------------------------
+
 scrape_id = 2
 
-selector  = "img.YQ4gaf:not(.zr758c)" # tergantung pada kelas css google saat ini
+# query yang akan menjadi kunci pencarian
+queries = [
+   "{name} flower",
+   "{name} flower photo"
+]
+# situs yang akan digunakan untuk mencari
+sites = [
+   {
+      "name"       : "google",
+      "url"        : "https://www.google.com/search?q={query}&tbm=isch&as_filetype=jpg&tbs=sur:fmc&udm=2",
+      "selector"   : "img.YQ4gaf:not(.zr758c)",
+      "pagination" : False,
+      "pages"      : 4,
+      "amount"     : 40,
+   },
+   {
+      "name"       : "freepik",
+      "url"        : "https://www.freepik.com/search?"
+         "format=search&"
+         "query={query}&"
+         "page={page}&"
+         "selection=1&"
+         "type=photo&"
+         "ai=excluded"
+         "#uuid=6e000a25-b7fa-4252-baa3-20a88ff9d9ef", #! penting jangan dihapus
+      "selector"   : "img.\\$block.\\$rounded.\\$object-cover.\\$object-center.\\$h-auto.\\$w-full",
+      "pagination" : True,
+      "pages"      : 2,
+      "amount"     : 80,
+   }
+]
+
+# --------------------------------------------------------------------------------
+
+# ambil gambar berdasarkan situs dan query
+def fetch(site, query) -> list[str]:
+   images = []
+   _, url, selector, pagination, pages, amount = site.values()
+
+   # loop berdasarkan jumlah pages jika situs berbentuk paginasi
+   for page in range(pages if pagination else 1):
+      driver.get(url.replace("{query}", query).replace("{page}", str(page)))
+      time.sleep(2)
+
+      # scroll berdasarkan jumlah pages jika situs tidak bersifat paginasi
+      for scroll in range(pages if not pagination else 1):
+         driver.find_element("tag name", "body").send_keys(Keys.END)
+         time.sleep(2)
+
+         # jika situs bersifat paginasi, akan mengambil gambar setiap 1 loop
+         if pagination:
+            images.extend(get_images(selector))
+
+      # jika situs tidak bersifat paginasi, akan mengambil gambar setelah scroll selesai 
+      if not pagination:
+         images.extend(get_images(selector))
+
+   return images[:amount]
+
+# ambil gambar dengan driver
+def get_images(selector):
+   return [img.get_attribute('src') for img in driver.find_elements('css selector', selector)]
+
+# --------------------------------------------------------------------------------
 
 # inisialisasi driver
-service = Service('../chromedriver-win64/chromedriver.exe')
-driver = webdriver.Chrome(service=service)
+driver  = webdriver.Chrome(service=Service('../chromedriver-win64/chromedriver.exe'))
 
-# searching
-search_url = f"https://www.google.com/search?q={query}&tbm=isch&tbs=sur:fmc&tbs=ift:jpg"
-driver.get(search_url)
+with open('../remaining-datasets.json', 'r') as file:
+   remaining = json.load(file)
 
-# scroll
-for _ in range(scroll):
-   driver.find_element("tag name", "body").send_keys(Keys.END)
-   time.sleep(2)
+for flower in remaining:
+   print(f"\n🔵 {flower}")
 
-# ambil gambar dengan selector
-images = driver.find_elements("css selector", selector)
-images = [img.get_attribute('src') for img in images if img.get_attribute('src')]
+   new_queries = map(
+      lambda query: query.replace("{name}", flower.replace("-", " ")),
+      queries
+   )
 
-# buat folder jika tidak ada
-folder = f"../datasets/{folder}"
-os.makedirs(folder, exist_ok=True)
+   folder_path = f"../datasets/{flower}"
+   os.makedirs(folder_path, exist_ok=True)
 
-for idx, src in enumerate(images[:count]):
+   # cari gambar dengan semua query
+   for idx_query, query in enumerate(new_queries):
 
-   nama_file = f"{flower}-{scrape_id}-{idx + 1}.jpg"
-   try:
+      # cari gambar dengan semua situs setiap query
+      for site in sites:
 
-      # menyimpan gambar yang didapat dalam bentuk url ataupun base64
-      binary  = base64.b64decode(src.split(',')[1]) if src.startswith('data:image') else requests.get(src).content
+         # mengunduh gambar yang ditemukan dari hasil fetch
+         for idx, src in enumerate(fetch(site, query)):
 
-      with open(f"{folder}/{nama_file}", 'wb') as file:
-         file.write(binary)
+            filename = f"{flower}_scrape-{scrape_id}_query-{idx_query + 1}_{site["name"]}_{idx + 1}.jpg"
 
-      print(f"✅ {nama_file} tersimpan")
+            try:
+               # menyimpan gambar yang didapat dalam bentuk url ataupun base64
+               binary = base64.b64decode(src.split(',')[1]) if src.startswith('data:image') else requests.get(src).content
+               with open(f"{folder_path}/{filename}", 'wb') as file:
+                  file.write(binary)
 
-   except Exception as e:
-      print(f"❗ {nama_file} gagal tersimpan: {e}")
+               print(f"✅ {filename}")
+
+            except Exception as e:
+               print(f"❗ {filename}: {e}")
 
 driver.quit()
