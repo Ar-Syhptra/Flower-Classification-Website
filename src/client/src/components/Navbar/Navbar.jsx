@@ -1,25 +1,43 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Logo from "../../assets/img/flower-logo.svg";
 import Button from "../Button/Button";
 import HamburgerMenu from "../HamburgerMenu";
 
 function Navbar() {
+  // Fungsi navbar melayang saat scroll
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar px-6 sm:px-8 md:px-20 lg:px-30 fixed z-50 shadow-sm backdrop-blur-sm bg-base-100/95">
+    <nav
+      className={`flex items-center w-full bg-base-100/80 shadow-sm backdrop-blur-md transition-all duration-300 z-50 ${
+        isScrolled
+          ? "p-1 fixed top-0 left-1/2 transform -translate-x-1/2 max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-7xl rounded-lg px-4 sm:px-6 md:px-8 lg:px-10 shadow-lg"
+          : "relative px-4 sm:px-6 md:px-12 lg:px-16 p-3"
+      }`}
+    >
       {/* Logo Section */}
       <div className="navbar-start flex items-center ">
-        <Link to="/">
-          <div className="flex items-center justify-center">
+        <a href="/">
+          <div className="flex items-center gap-1">
             <img
               src={Logo}
               alt="Logo"
-              className="w-12 sm:w-14 md:w-16 lg:w-18"
+              className="w-10 sm:w-12 md:w-14 lg:w-16"
             />
-            <h1 className="text-md text-center md:text-2xl lg:text-3xl text-primary font-noto font-bold">
+            <h1 className="text-center items-center text-xl md:text-2xl lg:text-3xl font-bold text-primary tracking-tight">
               FlorAI
             </h1>
           </div>
-        </Link>
+        </a>
       </div>
 
       {/* Hamburger Menu untuk Mobile */}
@@ -29,18 +47,18 @@ function Navbar() {
 
       {/* Login dan Register Button untuk Desktop*/}
       <div className="navbar-end hidden md:flex text-center gap-1">
-        <Link to="/login">
+        <a href="/login">
           <Button
             name="Login"
             className="btn btn-primary md:btn-md lg:btn-lg  text-base-100 rounded-lg"
           />
-        </Link>
-        <Link to="/register">
+        </a>
+        <a href="/register">
           <Button
             name="Register"
             className="btn btn-outline btn-primary md:btn-md lg:btn-lg hover:text-base-100 rounded-lg"
           />
-        </Link>
+        </a>
       </div>
     </nav>
   );

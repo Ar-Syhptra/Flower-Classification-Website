@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../data/navItems";
 
 function HamburgerMenu() {
@@ -31,16 +30,16 @@ function HamburgerMenu() {
         className="menu menu-md dropdown-content bg-base-100 rounded-lg z-[51] shadow-lg"
       >
         <div className="flex flex-col items-center gap-1">
-          <Link to="/login">
+          <a href="/login">
             <button className="btn btn-primary text-base-100 rounded-lg px-12">
               Login
             </button>
-          </Link>
-          <Link to="/register">
+          </a>
+          <a href="/register">
             <button className="btn btn-ghost text-primary rounded-lg px-10">
               Register
             </button>
-          </Link>
+          </a>
         </div>
       </ul>
     </div>
