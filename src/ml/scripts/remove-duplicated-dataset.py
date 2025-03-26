@@ -1,31 +1,34 @@
 import os
 import hashlib
-import json
-import shutil
 from PIL import Image
 
-folders = os.listdir('../datasets/')
+# --------------------------------------------------------------------------------
 
-hash_dict = {}
+folders = os.listdir("../datasets")
 
-# Loop melalui semua gambar dalam folder
+# --------------------------------------------------------------------------------
+
+# loop melalui semua gambar dalam folder
 for folder in folders:
+   print(f"\n🔵 {folder}")
 
+   hash_dict = {}
 
    folder_path = f"../datasets/{folder}"
-   print(f"🔵 {folder}")
 
    # jika folder bukanlah folder
-   if (not os.path.isdir(folder_path)):
+   if not os.path.isdir(folder_path):
       print(f"❗ {folder} bukanlah sebuah folder")
       continue
 
    for image_path in os.listdir(folder_path):
-      try:
 
+      try:
+         # load gambar dan mengubahnya ke rgb
          with Image.open(f"{folder_path}/{image_path}") as image:
             image = image.convert("RGB")
 
+         # menyimpan hasil hashing
          hash = hashlib.md5(image.tobytes()).hexdigest()
 
          # jika file tidak duplikat
