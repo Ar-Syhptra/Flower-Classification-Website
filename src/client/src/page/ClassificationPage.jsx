@@ -3,6 +3,8 @@ import Button from "../components/Button/Button";
 import BackgroundPattern from "../components/Background";
 import Navbar from "../components/Navbar/Navbar";
 
+const user = localStorage.getItem("user");
+
 const ClassificationPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [classificationResult, setClassificationResult] = useState(null);
@@ -58,7 +60,7 @@ const ClassificationPage = () => {
           <div className="h-20" />
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary text-center mb-8 sm:mb-12 font-noto animate-fade-in-down">
-            Flower Classification
+          Selamat Datang, {user}!
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">

@@ -31,7 +31,7 @@ function LoginPage() {
 
     try {
       const res = await loginUser(username, password);
-
+      localStorage.setItem("user", username);
       if (res.status === "success") {
         localStorage.setItem("token", res.token);
 
