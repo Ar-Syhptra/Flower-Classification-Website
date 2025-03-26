@@ -1,5 +1,8 @@
-!.gitkeep
 node_modules/
 
 src/ml/datasets/*
 !src/ml/datasets/*.zip
+src/ml/augmentation-area/input/*
+src/ml/augmentation-area/output/*
+
+!.gitkeep
