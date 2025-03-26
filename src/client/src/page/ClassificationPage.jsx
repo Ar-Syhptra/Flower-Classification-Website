@@ -31,7 +31,7 @@ const ClassificationPage = () => {
   // Fungsi simulasi klasifikasi
   const handleClassify = () => {
     if (!selectedImage) {
-      alert("Please upload an image first!");
+      alert("Unggah gambar terlebih dahulu!");
       return;
     }
 
@@ -66,7 +66,7 @@ const ClassificationPage = () => {
             <div className="flex flex-col items-center gap-6">
               <div className="w-full max-w-md">
                 <label className="block mb-2 text-lg font-medium text-gray-700 font-noto">
-                  Upload Your Flower Image
+                  Unggah gambar
                 </label>
                 <div className="relative group">
                   <input
@@ -98,7 +98,7 @@ const ClassificationPage = () => {
               <div className="w-full max-w-md relative group">
                 <img
                   src={selectedImage}
-                  alt="Flower preview"
+                  alt=""
                   className={`w-full h-64 sm:h-72 md:h-80 object-cover rounded-xl shadow-lg transition-all duration-300 ${
                     !selectedImage ? "opacity-50 grayscale" : "opacity-100"
                   }`}
@@ -108,7 +108,7 @@ const ClassificationPage = () => {
                   <button
                     onClick={handleRemoveImage}
                     className="absolute top-3 right-3 btn btn-sm btn-circle btn-error opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md"
-                    aria-label="Remove image"
+                    aria-label="Hapus Gambar"
                   >
                     ✕
                   </button>
@@ -120,7 +120,7 @@ const ClassificationPage = () => {
             <div className="flex flex-col items-center justify-center gap-6">
               <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
                 <Button
-                  name={isLoading ? "Classifying..." : "Classify Flower"}
+                  name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
                   className={`btn btn-primary btn-lg flex-1 transition-all duration-300 hover:shadow-lg ${
                     isLoading ? "loading" : ""
                   }`}
@@ -129,7 +129,7 @@ const ClassificationPage = () => {
                 />
                 {selectedImage && (
                   <Button
-                    name="Remove Image"
+                    name="Hapus Gambar"
                     className="btn btn-outline btn-error btn-lg flex-1 transition-all duration-300 hover:shadow-lg hover:bg-error hover:text-white"
                     onClick={handleRemoveImage}
                   />
@@ -141,7 +141,7 @@ const ClassificationPage = () => {
                 {classificationResult ? (
                   <div className="space-y-4 animate-fade-in-up">
                     <h2 className="text-xl md:text-2xl font-bold text-primary mb-4 font-noto">
-                      Classification Result
+                      Hasil klasifikasi
                     </h2>
                     <div className="flex items-center gap-3">
                       <svg
@@ -199,7 +199,7 @@ const ClassificationPage = () => {
                 ) : (
                   <div className="text-center space-y-4">
                     <p className="text-lg text-gray-600 font-noto">
-                      Upload an image to start classifying!
+                    Unggah gambar untuk mulai klasifikasi!
                     </p>
                     <div className="flex justify-center">
                       <svg
@@ -224,11 +224,10 @@ const ClassificationPage = () => {
               {/* Tips atau Info Tambahan */}
               <div className="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
                 <h3 className="text-lg font-bold text-primary mb-3 font-noto">
-                  Quick Tip
+                  Tips singkat
                 </h3>
                 <p className="text-gray-600">
-                  For best results, use a clear, well-lit image of a single
-                  flower against a plain background.
+                Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas dan terang dengan latar belakang polos.
                 </p>
               </div>
             </div>
