@@ -1,1 +1,5 @@
+!.gitkeep
 node_modules/
+
+src/ml/datasets/*
+!src/ml/datasets/*.zip
