@@ -51,16 +51,13 @@ const ClassificationPage = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-base-200 flex flex-col relative overflow-hidden">
-        {/* BG Patter */}
-        {/* <BackgroundPattern /> */}
-
         {/* Konten Utama */}
         <main className="flex-grow container mx-auto px-4 py-12 sm:py-16 relative z-10">
           {/* Spacer untuk Navbar fixed */}
           <div className="h-20" />
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary text-center mb-8 sm:mb-12 font-noto animate-fade-in-down">
-          Selamat Datang, {user}!
+            Selamat Datang, {user}!
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -201,7 +198,7 @@ const ClassificationPage = () => {
                 ) : (
                   <div className="text-center space-y-4">
                     <p className="text-lg text-gray-600 font-noto">
-                    Unggah gambar untuk mulai klasifikasi!
+                      Unggah gambar untuk mulai klasifikasi!
                     </p>
                     <div className="flex justify-center">
                       <svg
@@ -229,7 +226,8 @@ const ClassificationPage = () => {
                   Tips singkat
                 </h3>
                 <p className="text-gray-600">
-                Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas dan terang dengan latar belakang polos.
+                  Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas
+                  dan terang dengan latar belakang polos.
                 </p>
               </div>
             </div>

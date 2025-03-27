@@ -1,7 +1,7 @@
 import "./assets/styles/globals.css";
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import LoadingSpinner from "./components/LoadingSpinner";
+import LoadingSpinner from "./components/Loaders/LoadingSpinner";
 
 // Lazy load untuk halaman
 const HomePage = lazy(() => import("./page/HomePage"));

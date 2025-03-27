@@ -4,11 +4,9 @@ import DemoImage from "../../assets/img/florai-demo.png";
 function DemoSection() {
   return (
     <div className="min-h-80 flex flex-col gap-6 p-4 py-10">
-      <div className="bg-base-100">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-base-900 tracking-wide mb-8">
-          Apa Itu FlorAI?
-        </h2>
-      </div>
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-base-900 tracking-wide mb-8">
+        Apa Itu FlorAI?
+      </h2>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10">
         <img

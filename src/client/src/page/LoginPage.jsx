@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
-import BackToHome from "../components/Button/BackToHome";
+import BackToHome from "../components/Buttons/BackToHome";
 import { LucideMessageSquareWarning } from "lucide-react";
 
 function LoginPage() {

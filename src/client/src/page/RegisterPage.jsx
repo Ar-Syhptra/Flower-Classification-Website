@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../api/auth";
 import { Eye, EyeOff, Lock, User, AlertCircle } from "lucide-react";
-import BackToHome from "../components/Button/BackToHome";
+import BackToHome from "../components/Buttons/BackToHome";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");

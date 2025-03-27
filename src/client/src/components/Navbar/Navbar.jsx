@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Logo from "../../assets/img/flower-logo.svg";
-import Button from "../Button/Button";
-import HamburgerMenu from "../HamburgerMenu";
+import Button from "../Buttons/Button";
+import HamburgerMenu from "../Navbar/HamburgerMenu";
 
 function Navbar() {
   // Fungsi navbar melayang saat scroll

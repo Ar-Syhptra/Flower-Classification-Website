@@ -1,4 +1,4 @@
-import "../data/navItems";
+import "../../data/navItems";
 
 function HamburgerMenu() {
   return (
