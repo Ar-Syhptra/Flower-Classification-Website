@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-import Button from "../components/Button/Button";
-import BackgroundPattern from "../components/Background";
+import Button from "../components/Buttons/Button";
 import Navbar from "../components/Navbar/Navbar";
 
 const user = localStorage.getItem("user");
