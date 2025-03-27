@@ -18,9 +18,9 @@ function Navbar() {
 
   return (
     <nav
-      className={`flex items-center w-full bg-base-100/80 shadow-sm backdrop-blur-md transition-all duration-300 z-50 ${
+      className={`flex items-center w-full p-4 bg-base-100/80 shadow-sm backdrop-blur-md transition-all duration-300 z-50 ${
         isScrolled
-          ? "p-1 fixed top-0 left-1/2 transform -translate-x-1/2 max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-7xl rounded-lg px-4 sm:px-6 md:px-8 lg:px-10 shadow-lg"
+          ? "p-1 sticky top-1 left-0 right-0 mx-auto transform max-w-xl sm:max-w-3xl md:max-w-4xl lg:max-w-full lg:p-2 rounded-lg px-4 sm:px-6 md:px-8 lg:px-10 shadow-lg"
           : "relative px-4 sm:px-6 md:px-12 lg:px-16 p-3"
       }`}
     >
@@ -31,7 +31,7 @@ function Navbar() {
             <img
               src={Logo}
               alt="Logo"
-              className="w-10 sm:w-12 md:w-14 lg:w-16"
+              className="w-8 sm:w-10 md:w-12 lg:w-14"
             />
             <h1 className="text-center items-center text-xl md:text-2xl lg:text-3xl font-bold text-primary tracking-tight">
               FlorAI

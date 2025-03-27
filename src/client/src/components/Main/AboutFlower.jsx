@@ -1,7 +1,12 @@
 import React from "react";
-import Card from "../Card/Card";
 
 function AboutFlower() {
+  const sizeCard = {
+    fontTitle:
+      "text-md md:text-lg lg:text-xl font-bold tracking-wide text-base-900 text-center  ",
+    fontDescription: "text-sm md:text-md lg:text-lg text-center",
+  };
+
   const cards = [
     {
       title: "Mudah Digunakan",
@@ -27,16 +32,19 @@ function AboutFlower() {
         </h2>
       </div>
 
-      <div className="px-4 md:px-8 lg:px-16 pb-6 md:pb-10">
-        <div className="flex flex-wrap justify-center gap-4">
-          {cards.map((card, index) => (
-            <Card
-              key={index}
-              cardTittle={card.title}
-              cardDescription={card.description}
-            />
-          ))}
-        </div>
+      {/* Cards Container Responsive: Hp, Tablet, Desktop */}
+      <div className="grid md:grid-cols-3 lg:flex justify-baseline gap-4 px-20 md:px-8 lg:px-20 mb-10">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="flex flex-col md:flex md:flex-col lg:flex lg:flex-col items-center p-8 md:p-10 lg:p-10 bg-base-100 transition-all duration-500 rounded-lg gap-4 shadow-md hover:shadow-xl "
+          >
+            <div className={`items-center flex gap-2  ${sizeCard.fontTitle}`}>
+              {card.title}
+            </div>
+            <p className={sizeCard.fontDescription}>{card.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -27,16 +27,16 @@ function HamburgerMenu() {
 
       <ul
         tabIndex={0}
-        className="menu menu-md dropdown-content bg-base-100 rounded-lg z-[51] shadow-lg"
+        className="menu menu-xl dropdown-content bg-base-100 rounded-lg z-[51] shadow-lg"
       >
         <div className="flex flex-col items-center gap-1">
           <a href="/login">
-            <button className="btn btn-primary text-base-100 rounded-lg px-12">
+            <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary text-base-100 rounded-lg py-4 px-8">
               Login
             </button>
           </a>
           <a href="/register">
-            <button className="btn btn-ghost text-primary rounded-lg px-10">
+            <button className="btn btn-ghost btn-xs sm:btn-sm md:btn-md lg:btn-lg text-primary rounded-lg py-4 px-8">
               Register
             </button>
           </a>

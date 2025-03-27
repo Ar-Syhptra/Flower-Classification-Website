@@ -2,23 +2,31 @@ import React from "react";
 import { Upload, Cpu, FileText } from "lucide-react";
 
 function HowItWorks() {
+  const sizeSteps = {
+    icon: "w-10 h-10 md:w-14 md:h-14 lg:w-14 lg:h-14",
+    number:
+      "font-bold text-sm md:text-md lg:text-lg text-primary bg-gray-700 px-3 rounded-full text-white",
+    fontTitle:
+      "text-md md:text-lg lg:text-xl font-bold tracking-wide text-base-900",
+    fontDescription: "text-sm md:text-md lg:text-lg text-center",
+  };
   const steps = [
     {
-      icon: <Upload className="text-green-600" />,
-      number: "1️⃣",
+      icon: <Upload className={sizeSteps.icon} />,
+      number: "1",
       title: "Unggah Gambar",
       description: "Unggah gambar bunga yang ingin kamu identifikasi.",
     },
     {
-      icon: <Cpu className="text-blue-600" />,
-      number: "2️⃣",
+      icon: <Cpu className={`${sizeSteps.icon}`} />,
+      number: "2",
       title: "Proses AI",
       description:
         "Proses AI akan menganalisis gambar dengan model machine learning.",
     },
     {
-      icon: <FileText className="text-purple-600" />,
-      number: "3️⃣",
+      icon: <FileText className={`${sizeSteps.icon}`} />,
+      number: "3",
       title: "Dapatkan Hasil",
       description: "Dapatkan hasil beserta informasi tentang bunga tersebut.",
     },
@@ -34,17 +42,18 @@ function HowItWorks() {
       </div>
 
       {/* Cards Container Responsive: Hp, Tablet, Desktop */}
-      <div className="px-4 md:px-8 lg:px-16 pb-6 md:pb-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-10">
+      <div className="grid md:grid-cols-3 lg:flex justify-baseline gap-4 px-20 md:px-8 lg:px-20 mb-10">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="flex flex-col items-center p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="flex flex-col md:flex md:flex-col lg:flex lg:flex-col items-center px-10 p-4 md:p-4 lg:p-6 bg-base-100 transition-all duration-300 rounded-lg gap-4 shadow-md hover:shadow-lg "
           >
             {step.icon}
-            <div className="text-lg md:text-xl font-bold mb-2 text-center">
-              {step.number} {step.title}
+            <div className={`items-center flex gap-2  ${sizeSteps.fontTitle}`}>
+              <span className={`${sizeSteps.number}`}>{step.number}</span>
+              {step.title}
             </div>
-            <p className="text-center text-gray-700 text-sm md:text-md lg:text-lg">
+            <p className={` ${sizeSteps.fontDescription}`}>
               {step.description}
             </p>
           </div>
