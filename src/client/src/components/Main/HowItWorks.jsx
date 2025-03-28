@@ -5,27 +5,26 @@ function HowItWorks() {
   const sizeSteps = {
     icon: "w-10 h-10 md:w-14 md:h-14 lg:w-14 lg:h-14",
     number:
-      "font-bold text-sm md:text-md lg:text-lg text-primary bg-gray-700 px-3 rounded-full text-white",
-    fontTitle:
-      "text-md md:text-lg lg:text-xl font-bold tracking-wide text-base-900",
+      "font-bold text-sm md:text-md lg:text-lg text-primary bg-primary px-3 rounded-full text-white",
+    fontTitle: "text-md md:text-lg lg:text-xl font-bold text-base-900",
     fontDescription: "text-sm md:text-md lg:text-lg text-center",
   };
   const steps = [
     {
-      icon: <Upload className={sizeSteps.icon} />,
+      icon: <Upload className={`text-green-500 ${sizeSteps.icon}`} />,
       number: "1",
       title: "Unggah Gambar",
       description: "Unggah gambar bunga yang ingin kamu identifikasi.",
     },
     {
-      icon: <Cpu className={`${sizeSteps.icon}`} />,
+      icon: <Cpu className={`text-gray-500 ${sizeSteps.icon}`} />,
       number: "2",
       title: "Proses AI",
       description:
         "Proses AI akan menganalisis gambar dengan model machine learning.",
     },
     {
-      icon: <FileText className={`${sizeSteps.icon}`} />,
+      icon: <FileText className={`text-blue-700 ${sizeSteps.icon}`} />,
       number: "3",
       title: "Dapatkan Hasil",
       description: "Dapatkan hasil beserta informasi tentang bunga tersebut.",

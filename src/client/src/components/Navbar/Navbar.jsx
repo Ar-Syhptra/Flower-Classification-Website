@@ -9,7 +9,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -18,10 +18,10 @@ function Navbar() {
 
   return (
     <nav
-      className={`flex items-center w-full p-4 bg-base-100/80 shadow-sm backdrop-blur-md transition-all duration-300 z-50 ${
+      className={`flex items-center w-full p-4 bg-base-100 shadow-sm backdrop-blur-md transition-all duration-300 z-50 ${
         isScrolled
           ? "p-1 sticky top-1 left-0 right-0 mx-auto transform max-w-xl sm:max-w-3xl md:max-w-4xl lg:max-w-full lg:p-2 rounded-lg px-4 sm:px-6 md:px-8 lg:px-10 shadow-lg"
-          : "relative px-4 sm:px-6 md:px-12 lg:px-16 p-3"
+          : "relative px-4 sm:px-6 md:px-12 lg:px-18 p-3"
       }`}
     >
       {/* Logo Section */}

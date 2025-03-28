@@ -4,7 +4,7 @@ function AboutFlower() {
   const sizeCard = {
     fontTitle:
       "text-md md:text-lg lg:text-xl font-bold tracking-wide text-base-900 text-center  ",
-    fontDescription: "text-sm md:text-md lg:text-lg text-center",
+    fontDescription: "text-sm md:text-md lg:text-lg text-center w-full",
   };
 
   const cards = [
@@ -25,8 +25,8 @@ function AboutFlower() {
     },
   ];
   return (
-    <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-primary to-secondary">
-      <div className="flex justify-center text-center py-6 md:py-10">
+    <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-primary to-secondary">
+      <div className="flex justify-center items-center p-4 md:p-6">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-[1000] tracking-wide text-base-100">
           Kenapa Menggunakan FlorAI?
         </h2>
@@ -39,9 +39,7 @@ function AboutFlower() {
             key={index}
             className="flex flex-col md:flex md:flex-col lg:flex lg:flex-col items-center p-8 md:p-10 lg:p-10 bg-base-100 transition-all duration-500 rounded-lg gap-4 shadow-md hover:shadow-xl "
           >
-            <div className={`items-center flex gap-2  ${sizeCard.fontTitle}`}>
-              {card.title}
-            </div>
+            <div className={`${sizeCard.fontTitle}`}>{card.title}</div>
             <p className={sizeCard.fontDescription}>{card.description}</p>
           </div>
         ))}
