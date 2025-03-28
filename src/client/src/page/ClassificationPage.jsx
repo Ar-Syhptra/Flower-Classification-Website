@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Button from "../components/Buttons/Button";
-import Navbar from "../components/Navbar/Navbar";
+import BackToHome from "../components/Buttons/BackToHome";
 
 const user = localStorage.getItem("user");
 
@@ -48,13 +48,10 @@ const ClassificationPage = () => {
 
   return (
     <>
-      <Navbar />
+      <BackToHome />
       <div className="min-h-screen bg-base-200 flex flex-col relative overflow-hidden">
         {/* Konten Utama */}
         <main className="flex-grow container mx-auto px-4 py-12 sm:py-16 relative z-10">
-          {/* Spacer untuk Navbar fixed */}
-          <div className="h-20" />
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary text-center mb-8 sm:mb-12 font-noto animate-fade-in-down">
             Selamat Datang, {user}!
           </h1>
