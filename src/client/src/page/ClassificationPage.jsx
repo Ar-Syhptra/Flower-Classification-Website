@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Swal from "sweetalert2";
 import Button from "../components/Buttons/Button";
 import Navbar from "../components/Navbar/Navbar";
 
@@ -8,6 +9,7 @@ const ClassificationPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [classificationResult, setClassificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isScanning, setIsScanning] = useState(false);
   const fileInputRef = useRef(null);
 
   // Fungsi untuk menangani unggahan gambar
@@ -17,6 +19,14 @@ const ClassificationPage = () => {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
       setClassificationResult(null);
+
+      // Tambahkan efek scan setelah gambar diunggah
+      setIsScanning(true);
+
+      // Hentikan efek scan setelah beberapa detik
+      setTimeout(() => {
+        setIsScanning(false);
+      }, 2000);
     }
   };
 
@@ -32,24 +42,63 @@ const ClassificationPage = () => {
   // Fungsi simulasi klasifikasi
   const handleClassify = () => {
     if (!selectedImage) {
-      alert("Unggah gambar terlebih dahulu!");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Unggah gambar dulu dong coy!",
+        showConfirmButton: false,
+        timer: 2000,
+      });
       return;
     }
 
+    setIsScanning(true);
     setIsLoading(true);
+
     setTimeout(() => {
       setClassificationResult({
         flowerName: "Rose",
         probability: 0.95,
       });
       setIsLoading(false);
-    }, 2000); // delay
+      setIsScanning(false);
+    }, 5000);
   };
 
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-base-200 flex flex-col relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-blue-90 via-blue-290 to-blue-400 flex flex-col relative overflow-hidden">
+        <div className="absolute inset-0">
+          <svg
+            className="absolute bottom-0 w-full h-auto"
+            viewBox="0 0 1440 320"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            {/* Definisi Linear Gradient */}
+            <defs>
+              <linearGradient
+                id="blueGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="20%" stopColor="blue" /> {/* Biru Tua */}
+                <stop offset="80%" stopColor="#6dd5ed" /> {/* Biru Muda */}
+              </linearGradient>
+            </defs>
+
+            {/* Wave Background */}
+            <path
+              fill="url(#blueGradient)"
+              fillOpacity="1"
+              d="M0,256L60,250.7C120,245,240,235,360,234.7C480,235,600,245,720,240C840,235,960,213,1080,181.3C1200,149,1320,107,1380,85.3L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+        
         {/* Konten Utama */}
         <main className="flex-grow container mx-auto px-4 py-12 sm:py-16 relative z-10">
           {/* Spacer untuk Navbar fixed */}
@@ -59,11 +108,11 @@ const ClassificationPage = () => {
             Selamat Datang, {user}!
           </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
             {/* Area Unggah dan Pratinjau */}
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center gap-6 flex-1">
               <div className="w-full max-w-md">
-                <label className="block mb-2 text-lg font-medium text-gray-700 font-noto">
+                <label className="block mb-2 text-lg font-medium text-black-700 font-noto">
                   Unggah gambar
                 </label>
                 <div className="relative group">
@@ -93,30 +142,57 @@ const ClassificationPage = () => {
                 </div>
               </div>
 
-              <div className="w-full max-w-md relative group">
+              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-xl bg-white shadow-md hover:border-blue-500 transition-all">
                 <img
                   src={selectedImage}
                   alt=""
-                  className={`w-full h-64 sm:h-72 md:h-80 object-cover rounded-xl shadow-lg transition-all duration-300 ${
-                    !selectedImage ? "opacity-50 grayscale" : "opacity-100"
-                  }`}
-                  loading="lazy"
+                  className="w-full h-64 object-cover"
+                  onError={(e) => (e.target.style.display = "none")}
                 />
+
+                {/* Efek Pemindaian */}
+                {isScanning && (
+                  <div className="absolute top-0 left-0 w-full h-64 flex items-center">
+                    <div className="scan-line"></div>
+                  </div>
+                )}
+
+                {/* AGAR EFEK SCANING BISA BERJALAN */}
+                <style>
+                  {`
+                    @keyframes moveScan {
+                      0% { transform: translateY(0); opacity: 0.5;}  
+                      50% { transform: translateY(64px); opacity: 1;}  
+                      100% { transform: translateY(-64px); opacity: 0.5;} 
+                    }
+
+                    .scan-line {
+                      width: 100%;
+                      height: 10px; /* Ketebalan garis */
+                      background: rgba(43, 206, 255, 0.78);
+                      position: absolute;
+                      top: 50%;
+                      left: 0;
+                      transform: translateY(-50%);
+                      animation: moveScan 1.5s linear infinite alternate;
+                      box-shadow: 0 0 15px 10px rgba(13, 198, 255, 0.59);
+                    }
+                  `}
+                </style>
+
                 {selectedImage && (
                   <button
                     onClick={handleRemoveImage}
-                    className="absolute top-3 right-3 btn btn-sm btn-circle btn-error opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md"
+                    className="absolute top-3 right-3 bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md"
                     aria-label="Hapus Gambar"
                   >
                     ✕
                   </button>
                 )}
               </div>
-            </div>
-
-            {/* Area Kontrol dan Hasil */}
-            <div className="flex flex-col items-center justify-center gap-6">
-              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+              {/* Area Kontrol dan Hasil */}
+              <div className="flex flex-col items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md ">
                 <Button
                   name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
                   className={`btn btn-primary btn-lg flex-1 transition-all duration-300 hover:shadow-lg ${
@@ -135,7 +211,7 @@ const ClassificationPage = () => {
               </div>
 
               {/* Placeholder atau Hasil */}
-              <div className="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
+              <div className="w-full bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200 mt-10">
                 {classificationResult ? (
                   <div className="space-y-4 animate-fade-in-up">
                     <h2 className="text-xl md:text-2xl font-bold text-primary mb-4 font-noto">
@@ -220,7 +296,7 @@ const ClassificationPage = () => {
               </div>
 
               {/* Tips atau Info Tambahan */}
-              <div className="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
+              <div className="w-full bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
                 <h3 className="text-lg font-bold text-primary mb-3 font-noto">
                   Tips singkat
                 </h3>
@@ -229,13 +305,14 @@ const ClassificationPage = () => {
                   dan terang dengan latar belakang polos.
                 </p>
               </div>
+            </div> 
             </div>
           </div>
         </main>
 
         {/* Overlay Loading */}
         {isLoading && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fade-in">
+          <div className="fixed inset-0 bg-white/30 backdrop-blur-md flex items-center justify-center z-50 animate-fade-in">
             <div className="bg-base-100 p-6 rounded-xl shadow-2xl flex flex-col items-center gap-4">
               <div className="loading loading-spinner loading-lg text-primary"></div>
               <p className="text-lg font-noto text-primary animate-pulse">
