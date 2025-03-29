@@ -139,19 +139,11 @@ const ClassificationPage = () => {
                   onError={(e) => (e.target.style.display = "none")}
                 />
 
-                {selectedImage && (
-                  <button
-                    onClick={handleRemoveImage}
-                    className="absolute top-3 right-3 bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md"
-                    aria-label="Hapus Gambar"
-                  >
-                    ✕
-                  </button>
-                )}
+            
               </div>
               {/* Area Kontrol dan Hasil */}
               <div className="flex flex-col items-center justify-center gap-6">
-              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md ">
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
                 <Button
                   name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
                   className={`btn btn-primary btn-lg flex-1 transition-all duration-300 hover:shadow-lg ${
