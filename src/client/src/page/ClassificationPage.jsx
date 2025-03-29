@@ -9,7 +9,6 @@ const ClassificationPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [classificationResult, setClassificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isScanning, setIsScanning] = useState(false);
   const fileInputRef = useRef(null);
 
   // Fungsi untuk menangani unggahan gambar
@@ -19,14 +18,6 @@ const ClassificationPage = () => {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
       setClassificationResult(null);
-
-      // Tambahkan efek scan setelah gambar diunggah
-      setIsScanning(true);
-
-      // Hentikan efek scan setelah beberapa detik
-      setTimeout(() => {
-        setIsScanning(false);
-      }, 2000);
     }
   };
 
@@ -52,7 +43,6 @@ const ClassificationPage = () => {
       return;
     }
 
-    setIsScanning(true);
     setIsLoading(true);
 
     setTimeout(() => {
@@ -61,8 +51,7 @@ const ClassificationPage = () => {
         probability: 0.95,
       });
       setIsLoading(false);
-      setIsScanning(false);
-    }, 5000);
+    }, 2000);
   };
 
   return (
@@ -142,43 +131,13 @@ const ClassificationPage = () => {
                 </div>
               </div>
 
-              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-xl bg-white shadow-md hover:border-blue-500 transition-all">
+              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-6 rounded-xl bg-white shadow-md  transition-all">
                 <img
                   src={selectedImage}
                   alt=""
                   className="w-full h-64 object-cover"
                   onError={(e) => (e.target.style.display = "none")}
                 />
-
-                {/* Efek Pemindaian */}
-                {isScanning && (
-                  <div className="absolute top-0 left-0 w-full h-64 flex items-center">
-                    <div className="scan-line"></div>
-                  </div>
-                )}
-
-                {/* AGAR EFEK SCANING BISA BERJALAN */}
-                <style>
-                  {`
-                    @keyframes moveScan {
-                      0% { transform: translateY(0); opacity: 0.5;}  
-                      50% { transform: translateY(64px); opacity: 1;}  
-                      100% { transform: translateY(-64px); opacity: 0.5;} 
-                    }
-
-                    .scan-line {
-                      width: 100%;
-                      height: 10px; /* Ketebalan garis */
-                      background: rgba(43, 206, 255, 0.78);
-                      position: absolute;
-                      top: 50%;
-                      left: 0;
-                      transform: translateY(-50%);
-                      animation: moveScan 1.5s linear infinite alternate;
-                      box-shadow: 0 0 15px 10px rgba(13, 198, 255, 0.59);
-                    }
-                  `}
-                </style>
 
                 {selectedImage && (
                   <button
