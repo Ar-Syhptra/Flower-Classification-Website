@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "../components/Buttons/Button";
 import BackToHome from "../components/Buttons/BackToHome";
+import { fetchFlowersData } from "../api/data";
 
 const user = localStorage.getItem("user");
 
@@ -9,8 +10,20 @@ const ClassificationPage = () => {
   const [classificationResult, setClassificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
+  const [flowerData, setFlowerData] = useState(null);
 
-  // Fungsi untuk menangani unggahan gambar
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchFlowersData();
+        setFlowerData(data.data);
+      } catch (error) {
+        console.error("Failed to fetch flower data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -20,7 +33,6 @@ const ClassificationPage = () => {
     }
   };
 
-  // Fungsi untuk menghapus gambar
   const handleRemoveImage = () => {
     setSelectedImage(null);
     setClassificationResult(null);
@@ -29,7 +41,6 @@ const ClassificationPage = () => {
     }
   };
 
-  // Fungsi simulasi klasifikasi
   const handleClassify = () => {
     if (!selectedImage) {
       alert("Unggah gambar terlebih dahulu!");
@@ -38,26 +49,34 @@ const ClassificationPage = () => {
 
     setIsLoading(true);
     setTimeout(() => {
+      const flower = flowerData[0];
       setClassificationResult({
-        flowerName: "Rose",
+        flowerName: flower.name,
         probability: 0.95,
+        description: flower.description,
+        health_uses: flower.health_uses,
+        culture_uses: flower.culture_uses,
+        sunlight_tips: flower.sunlight_tips,
+        water_tips: flower.water_tips,
+        soil_tips: flower.soil_tips,
+        habitat: flower.habitat,
+        status: flower.status,
+        wikipedia: flower.wikipedia,
       });
       setIsLoading(false);
-    }, 2000); // delay
+    }, 2000);
   };
 
   return (
     <>
       <BackToHome />
       <div className="min-h-screen bg-base-200 flex flex-col relative overflow-hidden">
-        {/* Konten Utama */}
         <main className="flex-grow container mx-auto px-4 py-12 sm:py-16 relative z-10">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary text-center mb-8 sm:mb-12 font-noto animate-fade-in-down">
             Selamat Datang, {user}!
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Area Unggah dan Pratinjau */}
             <div className="flex flex-col items-center gap-6">
               <div className="w-full max-w-md">
                 <label className="block mb-2 text-lg font-medium text-gray-700 font-noto">
@@ -111,7 +130,6 @@ const ClassificationPage = () => {
               </div>
             </div>
 
-            {/* Area Kontrol dan Hasil */}
             <div className="flex flex-col items-center justify-center gap-6">
               <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
                 <Button
@@ -131,65 +149,45 @@ const ClassificationPage = () => {
                 )}
               </div>
 
-              {/* Placeholder atau Hasil */}
               <div className="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
                 {classificationResult ? (
                   <div className="space-y-4 animate-fade-in-up">
-                    <h2 className="text-xl md:text-2xl font-bold text-primary mb-4 font-noto">
-                      Hasil klasifikasi
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-noto">
+                      Hasil Klasifikasi Bunga
                     </h2>
-                    <div className="flex items-center gap-3">
-                      <svg
-                        className="w-6 h-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <p className="text-lg md:text-xl">
-                        Flower:{" "}
-                        <span className="font-semibold text-primary">
-                          {classificationResult.flowerName}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <svg
-                        className="w-6 h-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                      <p className="text-lg md:text-xl">
-                        Confidence:{" "}
-                        <span className="font-semibold text-primary">
-                          {(classificationResult.probability * 100).toFixed(2)}%
-                        </span>
-                      </p>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="bg-primary h-3 rounded-full transition-all duration-700 ease-out"
-                        style={{
-                          width: `${classificationResult.probability * 100}%`,
-                        }}
-                      />
-                    </div>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Nama Bunga: {classificationResult.flowerName}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Kemungkinan: {classificationResult.probability}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Deskripsi: {classificationResult.description}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Manfaat Kesehatan: {classificationResult.health_uses}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Manfaat Budaya: {classificationResult.culture_uses}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Tips Pencahayaan: {classificationResult.sunlight_tips}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Tips Pengairan: {classificationResult.water_tips}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Tips Media Tanam: {classificationResult.soil_tips}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Habitat: {classificationResult.habitat}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Status: {classificationResult.status}
+                    </p>
+                    <p className="text-lg md:text-xl font-semibold text-primary">
+                      Wikipedia: {classificationResult.wikipedia}
+                    </p>
                   </div>
                 ) : (
                   <div className="text-center space-y-4">
@@ -216,7 +214,6 @@ const ClassificationPage = () => {
                 )}
               </div>
 
-              {/* Tips atau Info Tambahan */}
               <div className="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
                 <h3 className="text-lg font-bold text-primary mb-3 font-noto">
                   Tips singkat
@@ -230,7 +227,6 @@ const ClassificationPage = () => {
           </div>
         </main>
 
-        {/* Overlay Loading */}
         {isLoading && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fade-in">
             <div className="bg-base-100 p-6 rounded-xl shadow-2xl flex flex-col items-center gap-4">
@@ -247,3 +243,4 @@ const ClassificationPage = () => {
 };
 
 export default ClassificationPage;
+
