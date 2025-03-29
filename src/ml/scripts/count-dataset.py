@@ -3,15 +3,15 @@ import json
 
 # --------------------------------------------------------------------------------
 
-folder_counts = {}
-total_file    = 0
+total_file = 0
 # batas minimum file per folder
-target        = 300
+target     = 300
 
 # --------------------------------------------------------------------------------
 
-folders = os.listdir('../datasets')
-below   = []
+folders       = os.listdir('../datasets')
+folder_counts = {}
+below         = []
 
 for folder in folders:
    folder_path = f'../datasets/{folder}'
