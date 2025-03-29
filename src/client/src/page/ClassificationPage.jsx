@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import Button from "../components/Buttons/Button";
-import BackToHome from "../components/Buttons/BackToHome";
-
+import BackToHome from "../components/Navbar/NavbarLogout";
 const user = localStorage.getItem("user");
 
 const ClassificationPage = () => {

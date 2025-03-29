@@ -12,7 +12,7 @@ function DemoSection() {
         <img
           src={DemoImage}
           alt="FlorAI Demo"
-          className="w-48 h-48 md:w-60 md:h-60 lg:w-70 lg:h-70 rounded-full hover:border-b-8  border-primary/10 transition-all ease-out duration-300 shadow-md hover:shadow-xl object-cover mb-6 md:mb-0"
+          className="w-48 h-48 md:w-60 md:h-60 lg:w-70 lg:h-70 rounded-full shadow-md"
         />
         <div className="max-w-xl">
           <p className="text-sm md:text-md lg:text-lg text-center md:text-left">
