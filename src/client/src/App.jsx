@@ -2,6 +2,7 @@ import "./assets/styles/globals.css";
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/Loaders/LoadingSpinner";
+import ClassificationMiddleware from "./middleware/ClassificationMiddleware";
 
 // Lazy load untuk halaman
 const HomePage = lazy(() => import("./page/HomePage"));
@@ -19,7 +20,14 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/classification" element={<ClassificationPage />} />
+          <Route
+          path="/classification"
+          element={
+            <ClassificationMiddleware>
+              <ClassificationPage />
+            </ClassificationMiddleware>
+          }
+        />
         </Routes>
       </Suspense>
     </>
