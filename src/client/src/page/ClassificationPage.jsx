@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../components/Buttons/Button";
 import BackToHome from "../components/Navbar/NavbarLogout";
+import { fetchFlowersData } from "../api/data";
+
 const user = localStorage.getItem("user");
 
 const ClassificationPage = () => {
@@ -241,3 +243,4 @@ const ClassificationPage = () => {
 };
 
 export default ClassificationPage;
+
