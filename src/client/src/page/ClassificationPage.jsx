@@ -19,7 +19,7 @@ const ClassificationPage = () => {
         const data = await fetchFlowersData();
         setFlowerData(data.data);
       } catch (error) {
-        console.error("Failed to fetch flower data:", error);
+        console.error("Gagal mengambil data bunga:", error);
       }
     };
     fetchData();
@@ -47,7 +47,7 @@ const ClassificationPage = () => {
       Swal.fire({
         icon: "warning",
         title: "Oops...",
-        text: "Unggah gambar dulu dong coy!",
+        text: "Unggah gambar terlebih dahulu!",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -109,15 +109,15 @@ const ClassificationPage = () => {
           </svg>
         </div>
         {/* Konten Utama */}
-        <main className="flex-grow container mx-auto px-4 py-12 sm:py-16 relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary text-center mb-8 sm:mb-12 font-noto animate-fade-in-down">
+        <main className="flex-grow container mx-auto px-4 py-8 sm:py-12 relative z-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center mb-6 sm:mb-8 md:mb-12 font-noto animate-fade-in-down">
             Selamat Datang, {user}!
           </h1>
-          <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
             {/* Area Unggah dan Pratinjau */}
-            <div className="flex flex-col items-center gap-6 flex-1">
+            <div className="flex flex-col items-center gap-4 sm:gap-6 flex-1">
               <div className="w-full max-w-md">
-                <label className="block mb-2 text-lg font-medium text-black-700 font-noto">
+                <label className="block mb-2 text-base sm:text-lg font-medium text-black-700 font-noto">
                   Unggah gambar
                 </label>
                 <div className="relative group">
@@ -126,11 +126,11 @@ const ClassificationPage = () => {
                     accept="image/*"
                     ref={fileInputRef}
                     onChange={handleImageUpload}
-                    className="file-input file-input-bordered file-input-primary w-full transition-all duration-300 hover:shadow-md hover:border-primary-focus"
+                    className="file-input file-input-bordered file-input-primary w-full text-sm sm:text-base transition-all duration-300 hover:shadow-md hover:border-primary-focus"
                   />
                   <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 group-hover:text-primary transition-colors duration-300">
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -147,119 +147,123 @@ const ClassificationPage = () => {
                 </div>
               </div>
 
-              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-6 rounded-xl bg-white shadow-md  transition-all">
+              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-3 sm:p-6 rounded-xl bg-white shadow-md transition-all">
                 <img
                   src={selectedImage}
                   alt=""
-                  className="w-full h-64 object-cover"
+                  className="w-full h-48 sm:h-64 object-cover"
                   onError={(e) => (e.target.style.display = "none")}
                 />
               </div>
               {/* Area Kontrol dan Hasil */}
-              <div className="flex flex-col items-center justify-center gap-6">
-              <div className="flex flex-col sm:flex-row gap-4 w-full">
-                <Button
-                  name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
-                  className={`btn btn-primary btn-lg flex-1 transition-all duration-300 hover:shadow-lg ${
-                    isLoading ? "loading" : ""
-                  }`}
-                  onClick={handleClassify}
-                  disabled={isLoading || !selectedImage}
-                />
-                {selectedImage && (
+              <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 w-full">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
                   <Button
-                    name="Hapus Gambar"
-                    className="btn btn-outline btn-error btn-lg flex-1 transition-all duration-300 hover:shadow-lg hover:bg-error hover:text-white"
-                    onClick={handleRemoveImage}
+                    name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
+                    className={`btn btn-primary btn-md sm:btn-lg text-sm sm:text-base flex-1 transition-all duration-300 hover:shadow-lg ${
+                      isLoading ? "loading" : ""
+                    }`}
+                    onClick={handleClassify}
+                    disabled={isLoading || !selectedImage}
                   />
-                )}
-              </div>
-              {/* Placeholder atau Hasil */}
-              <div className="w-full bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200 mt-10">
-                {classificationResult ? (
-                  <div className="space-y-4 animate-fade-in-up">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-noto">
-                      Hasil Klasifikasi Bunga
-                    </h2>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Nama Bunga: {classificationResult.flowerName}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Kemungkinan: {classificationResult.probability}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Deskripsi: {classificationResult.description}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Manfaat Kesehatan: {classificationResult.health_uses}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Manfaat Budaya: {classificationResult.culture_uses}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Tips Pencahayaan: {classificationResult.sunlight_tips}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Tips Pengairan: {classificationResult.water_tips}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Tips Media Tanam: {classificationResult.soil_tips}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Habitat: {classificationResult.habitat}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Status: {classificationResult.status}
-                    </p>
-                    <p className="text-lg md:text-xl font-semibold text-primary">
-                      Wikipedia: {classificationResult.wikipedia}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="text-center space-y-4">
-                    <p className="text-lg text-gray-600 font-noto">
-                      Unggah gambar untuk mulai klasifikasi!
-                    </p>
-                    <div className="flex justify-center">
-                      <svg
-                        className="w-12 h-12 text-primary opacity-50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                        />
-                      </svg>
+                  {selectedImage && (
+                    <Button
+                      name="Hapus Gambar"
+                      className="btn btn-outline btn-error btn-md sm:btn-lg text-sm sm:text-base flex-1 transition-all duration-300 hover:shadow-lg hover:bg-error hover:text-white"
+                      onClick={handleRemoveImage}
+                    />
+                  )}
+                </div>
+                {/* Placeholder atau Hasil */}
+                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 mt-4 sm:mt-10">
+                  {classificationResult ? (
+                    <div className="space-y-3 sm:space-y-4 animate-fade-in-up">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 sm:mb-4 font-noto">
+                        Hasil Klasifikasi Bunga
+                      </h2>
+                      <div className="overflow-x-auto">
+                        <div className="space-y-2 sm:space-y-3">
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Nama Bunga: {classificationResult.flowerName}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Kemungkinan: {classificationResult.probability}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Deskripsi: {classificationResult.description}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Manfaat Kesehatan: {classificationResult.health_uses}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Manfaat Budaya: {classificationResult.culture_uses}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Tips Pencahayaan: {classificationResult.sunlight_tips}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Tips Pengairan: {classificationResult.water_tips}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Tips Media Tanam: {classificationResult.soil_tips}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Habitat: {classificationResult.habitat}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Status: {classificationResult.status}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
+                            Wikipedia: {classificationResult.wikipedia}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              {/* Tips atau Info Tambahan */}
-              <div className="w-full bg-base-100 p-6 rounded-xl shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-primary mb-3 font-noto">
-                  Tips singkat
-                </h3>
-                <p className="text-gray-600">
-                  Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas
-                  dan terang dengan latar belakang polos.
-                </p>
-              </div>
-            </div> 
+                  ) : (
+                    <div className="text-center space-y-3 sm:space-y-4 py-4 sm:py-6">
+                      <p className="text-sm sm:text-base md:text-lg text-gray-600 font-noto">
+                        Unggah gambar untuk mulai klasifikasi!
+                      </p>
+                      <div className="flex justify-center">
+                        <svg
+                          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary opacity-50"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {/* Tips atau Info Tambahan */}
+                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200">
+                  <h3 className="text-base sm:text-lg font-bold text-primary mb-2 sm:mb-3 font-noto">
+                    Tips singkat
+                  </h3>
+                  <p className="text-xs sm:text-sm md:text-base text-gray-600">
+                    Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas
+                    dan terang dengan latar belakang polos.
+                  </p>
+                </div>
+              </div> 
             </div>
           </div>
         </main>
 
         {isLoading && (
           <div className="fixed inset-0 bg-white/30 backdrop-blur-md flex items-center justify-center z-50 animate-fade-in">
-            <div className="bg-base-100 p-6 rounded-xl shadow-2xl flex flex-col items-center gap-4">
-              <div className="loading loading-spinner loading-lg text-primary"></div>
-              <p className="text-lg font-noto text-primary animate-pulse">
-                Analyzing your flower...
+            <div className="bg-base-100 p-4 sm:p-6 rounded-xl shadow-2xl flex flex-col items-center gap-3 sm:gap-4">
+              <div className="loading loading-spinner loading-md sm:loading-lg text-primary"></div>
+              <p className="text-base sm:text-lg font-noto text-primary animate-pulse">
+                Memproses gambar...
               </p>
             </div>
           </div>
@@ -270,4 +274,3 @@ const ClassificationPage = () => {
 };
 
 export default ClassificationPage;
-
