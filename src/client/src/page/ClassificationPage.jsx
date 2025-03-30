@@ -75,9 +75,26 @@ const ClassificationPage = () => {
       setIsLoading(false);
 
       setTimeout(() => {
-        resultRef.current?.scrollIntoView({ behavior: "smooth" });
+        smoothScrollTo(resultRef.current.offsetTop, 480); 
       }, 100);
     }, 2000);
+  };
+  const smoothScrollTo = (targetY, duration) => {
+    const startY = window.scrollY;
+    const difference = targetY - startY;
+    const startTime = performance.now();
+  
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + difference * progress);
+  
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+  
+    requestAnimationFrame(step);
   };
 
   return (
