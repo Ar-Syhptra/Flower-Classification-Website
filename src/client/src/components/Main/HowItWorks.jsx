@@ -17,7 +17,7 @@ function HowItWorks() {
       description: "Unggah gambar bunga yang ingin kamu identifikasi.",
     },
     {
-      icon: <Cpu className={`text-gray-500 ${sizeSteps.icon}`} />,
+      icon: <Cpu className={`text-blue-500 ${sizeSteps.icon}`} />,
       number: "2",
       title: "Proses AI",
       description:
@@ -63,3 +63,4 @@ function HowItWorks() {
 }
 
 export default HowItWorks;
+
