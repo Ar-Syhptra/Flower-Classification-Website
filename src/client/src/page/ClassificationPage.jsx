@@ -12,6 +12,7 @@ const ClassificationPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
   const [flowerData, setFlowerData] = useState(null);
+  const resultRef = useRef(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,6 +73,10 @@ const ClassificationPage = () => {
         wikipedia: flower.wikipedia,
       });
       setIsLoading(false);
+
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }, 2000);
   };
 
@@ -175,7 +180,7 @@ const ClassificationPage = () => {
                   )}
                 </div>
                 {/* Placeholder atau Hasil */}
-                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 mt-4 sm:mt-10">
+                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 mt-4 sm:mt-10" ref={resultRef}>
                   {classificationResult ? (
                     <div className="space-y-3 sm:space-y-4 animate-fade-in-up">
                       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 sm:mb-4 font-noto">
