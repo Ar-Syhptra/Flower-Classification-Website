@@ -1,9 +1,18 @@
 import React from "react";
 import { CircleUser } from "lucide-react";
 import Profile from "../../assets/img/flower-logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavbarLogout() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("rememberedUsername");
+    navigate("/");
+  };
+
   return (
     <>
       <div className="navbar bg-base-100 shadow-sm p-4 px-4 sm:px-8 md:px-10 lg:px-12">
@@ -36,8 +45,11 @@ function NavbarLogout() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-auto p-2 shadow"
             >
               <li>
-                <button className="btn btn-primary btn-sm md:btn-md lg:btn-lg text-white text-sm md:text-md lg:text-lg rounded-lg px-6">
-                  <Link to="/">Logout</Link>
+                <button
+                  className="btn btn-primary btn-sm md:btn-md lg:btn-lg text-white text-sm md:text-md lg:text-lg rounded-lg px-6"
+                  onClick={handleLogout}
+                >
+                  Logout
                 </button>
               </li>
             </ul>
@@ -50,3 +62,4 @@ function NavbarLogout() {
 }
 
 export default NavbarLogout;
+
