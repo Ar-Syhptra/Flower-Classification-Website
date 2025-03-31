@@ -8,9 +8,11 @@ const db = new Pool({
   },
 });
 
-db
-  .connect()
-  .then(() => console.log("Database connected!"))
-  .catch((err) => console.error("Database connection error!!", err));
+try {
+  db.connect();
+  console.log("Database connected!");
+} catch (err) {
+  console.error("Database connection error!!", err);
+}
 
 module.exports = db;
