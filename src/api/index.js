@@ -12,7 +12,7 @@ const PORT = process.env.PORTBE;
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
+app.use("/api", authRoutes);
 app.use("/api/flowers", authenticateUser, routes);
 
 app.listen(PORT, () => {
