@@ -1,7 +1,7 @@
 node_modules/
 
 src/ml/datasets/*
-!src/ml/datasets/*.zip
+!src/ml/datasets/README.md
 src/ml/augmentation-area/input/*
 src/ml/augmentation-area/output/*
 

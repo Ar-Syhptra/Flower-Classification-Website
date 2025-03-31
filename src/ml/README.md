@@ -30,12 +30,16 @@ Folder yang berisi program chrome driver yang digunakan untuk mengumpulkan data 
 
 ## `datasets`
 
-Folder yang berisi dataset yang telah didapatkan dari pengumpulan data yang dikelompokkan berdasarkan kategori. Folder ini juga menyimpan semua dataset dalam bentuk zip. Folder ini digunakan oleh script `scrape-dataset.py`, `reduce-dataset.py`, dan `remove-duplicated-dataset.py`.
+Folder yang berisi dataset yang telah didapatkan dari pengumpulan data yang dikelompokkan berdasarkan kategori. Folder ini digunakan oleh script `scrape-dataset.py`, `reduce-dataset.py`, dan `remove-duplicated-dataset.py`.
+
+> Dataset dibagikan di cloud MEGA untuk mengoptimalkan repository ini.
+> Daftar dataset dalam bentuk zip yang bisa diakses [disini](https://mega.nz/folder/ltJmxBYC#HJbHIDMBTrK6ZlqV7VmVag).
 
 ```
 datasets/
-└── {kategori}/
-    └── {dataset}
+├── {kategori}/
+|   └── {dataset}
+└── README.md
 ```
 
 ## `model-datasets` (?)
