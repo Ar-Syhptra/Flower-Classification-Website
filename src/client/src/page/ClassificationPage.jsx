@@ -1,8 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
+import React, { useState, useEffect, useRef } from "react";
+import { fetchFlowersData } from "../api/data";
 import Button from "../components/Buttons/Button";
 import BackToHome from "../components/Navbar/NavbarLogout";
-import { fetchFlowersData } from "../api/data";
+import Loading from "../components/Classification/Loading";
+import InputImage from "../components/Classification/InputImage";
+import ResultCard from "../components/Classification/ResultCard";
+import TipsSection from "../components/Classification/TipsSection";
 
 const user = localStorage.getItem("user");
 
@@ -12,7 +16,7 @@ const ClassificationPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
   const [flowerData, setFlowerData] = useState(null);
-  const resultRef = useRef(null)
+  const resultRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,115 +79,70 @@ const ClassificationPage = () => {
       setIsLoading(false);
 
       setTimeout(() => {
-        smoothScrollTo(resultRef.current.offsetTop, 480); 
+        smoothScrollTo(resultRef.current.offsetTop, 480);
       }, 100);
     }, 2000);
   };
+
   const smoothScrollTo = (targetY, duration) => {
     const startY = window.scrollY;
     const difference = targetY - startY;
     const startTime = performance.now();
-  
+
     function step(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       window.scrollTo(0, startY + difference * progress);
-  
+
       if (progress < 1) {
         requestAnimationFrame(step);
       }
     }
-  
+
     requestAnimationFrame(step);
   };
 
   return (
     <>
       <BackToHome />
-      <div className="min-h-screen bg-gradient-to-b from-blue-90 via-blue-290 to-blue-400 flex flex-col relative overflow-hidden">
-        <div className="absolute inset-0">
-          <svg
-            className="absolute bottom-0 w-full h-auto"
-            viewBox="0 0 1440 320"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-          >
-            {/* Definisi Linear Gradient */}
-            <defs>
-              <linearGradient
-                id="blueGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
+      <main className="min-h-screen bg-gradient-to-b from-primary/90 via-accent to-secondary to-70%">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col items-center gap-8">
+            <header className="text-center">
+              <h1 className="font-bold text-xl sm:text-2xl md:text:3xl lg:text-4xl text-white mb-2 drop-shadow-md">
+                Selamat Datang, {user}!
+              </h1>
+              <p className="text-white text-sm sm:text-md md:text-lg lg:text-xl">
+                Unggah gambar bunga untuk memulai Klasifikasi!
+              </p>
+            </header>
+
+            <div
+              className={`w-full transition-all duration-500 ease-in-out ${
+                classificationResult
+                  ? "flex flex-col md:flex-col lg:flex-row gap-4 "
+                  : "max-w-lg md:max-w-xl lg:max-w-2xl"
+              }`}
+            >
+              {/* Input Image Section */}
+              <section
+                className={`h-full bg-white backdrop-blur-md rounded-xl p-8 shadow-lg transition-all duration-500 ease-in-out
+                ${classificationResult ? "grid" : "w-full"}`}
               >
-                <stop offset="20%" stopColor="blue" /> {/* Biru Tua */}
-                <stop offset="80%" stopColor="#6dd5ed" /> {/* Biru Muda */}
-              </linearGradient>
-            </defs>
-
-            {/* Wave Background */}
-            <path
-              fill="url(#blueGradient)"
-              fillOpacity="1"
-              d="M0,256L60,250.7C120,245,240,235,360,234.7C480,235,600,245,720,240C840,235,960,213,1080,181.3C1200,149,1320,107,1380,85.3L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-            ></path>
-          </svg>
-        </div>
-        {/* Konten Utama */}
-        <main className="flex-grow container mx-auto px-4 py-8 sm:py-12 relative z-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center mb-6 sm:mb-8 md:mb-12 font-noto animate-fade-in-down">
-            Selamat Datang, {user}!
-          </h1>
-          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
-            {/* Area Unggah dan Pratinjau */}
-            <div className="flex flex-col items-center gap-4 sm:gap-6 flex-1">
-              <div className="w-full max-w-md">
-                <label className="block mb-2 text-base sm:text-lg font-medium text-black-700 font-noto">
-                  Unggah gambar
-                </label>
-                <div className="relative group">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    onChange={handleImageUpload}
-                    className="file-input file-input-bordered file-input-primary w-full text-sm sm:text-base transition-all duration-300 hover:shadow-md hover:border-primary-focus"
-                  />
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 group-hover:text-primary transition-colors duration-300">
-                    <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="w-full max-w-md relative flex flex-col items-center justify-center p-3 sm:p-6 rounded-xl bg-white shadow-md transition-all">
-                <img
-                  src={selectedImage}
-                  alt=""
-                  className="w-full h-48 sm:h-64 object-cover"
-                  onError={(e) => (e.target.style.display = "none")}
+                <InputImage
+                  selectedImage={selectedImage}
+                  handleImageUpload={handleImageUpload}
+                  handleRemoveImage={handleRemoveImage}
+                  fileInputRef={fileInputRef}
                 />
-              </div>
-              {/* Area Kontrol dan Hasil */}
-              <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 w-full">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+
+                <div className="w-full grid grid-cols-1 md:flex lg:flex mt-6 items-center justify-center gap-1">
                   <Button
-                    name={isLoading ? "Classifying..." : "Klasifikasi Bunga"}
-                    className={`btn btn-primary btn-md sm:btn-lg text-sm sm:text-base flex-1 transition-all duration-300 hover:shadow-lg ${
-                      isLoading ? "loading" : ""
+                    name={
+                      isLoading ? "Mengklasifikasi..." : "Klasifikasi Gambar"
+                    }
+                    className={`bg-primary rounded-lg px-4 py-3 text-white font-semibold hover:bg-white hover:text-primary border transition-all text-sm md:text-md lg:text-[16px] w-full ${
+                      isLoading ? "opacity-75 cursor-not-allowed" : ""
                     }`}
                     onClick={handleClassify}
                     disabled={isLoading || !selectedImage}
@@ -191,106 +150,39 @@ const ClassificationPage = () => {
                   {selectedImage && (
                     <Button
                       name="Hapus Gambar"
-                      className="btn btn-outline btn-error btn-md sm:btn-lg text-sm sm:text-base flex-1 transition-all duration-300 hover:shadow-lg hover:bg-error hover:text-white"
+                      className="bg-red-500 rounded-lg px-4 py-3 text-white font-semibold hover:bg-white hover:text-red-500 hover:border border transition-all text-sm md:text-md lg:text-[16px] w-full"
                       onClick={handleRemoveImage}
                     />
                   )}
                 </div>
-                {/* Placeholder atau Hasil */}
-                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 mt-4 sm:mt-10" ref={resultRef}>
-                  {classificationResult ? (
-                    <div className="space-y-3 sm:space-y-4 animate-fade-in-up">
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 sm:mb-4 font-noto">
-                        Hasil Klasifikasi Bunga
-                      </h2>
-                      <div className="overflow-x-auto">
-                        <div className="space-y-2 sm:space-y-3">
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Nama Bunga: {classificationResult.flowerName}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Kemungkinan: {classificationResult.probability}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Deskripsi: {classificationResult.description}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Manfaat Kesehatan: {classificationResult.health_uses}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Manfaat Budaya: {classificationResult.culture_uses}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Tips Pencahayaan: {classificationResult.sunlight_tips}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Tips Pengairan: {classificationResult.water_tips}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Tips Media Tanam: {classificationResult.soil_tips}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Habitat: {classificationResult.habitat}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Status: {classificationResult.status}
-                          </p>
-                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-primary">
-                            Wikipedia: {classificationResult.wikipedia}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center space-y-3 sm:space-y-4 py-4 sm:py-6">
-                      <p className="text-sm sm:text-base md:text-lg text-gray-600 font-noto">
-                        Unggah gambar untuk mulai klasifikasi!
-                      </p>
-                      <div className="flex justify-center">
-                        <svg
-                          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary opacity-50"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                {/* Tips atau Info Tambahan */}
-                <div className="w-full bg-base-100 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200">
-                  <h3 className="text-base sm:text-lg font-bold text-primary mb-2 sm:mb-3 font-noto">
-                    Tips singkat
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-600">
-                    Untuk hasil terbaik, gunakan gambar bunga tunggal yang jelas
-                    dan terang dengan latar belakang polos.
-                  </p>
-                </div>
-              </div> 
-            </div>
-          </div>
-        </main>
+              </section>
 
-        {isLoading && (
-          <div className="fixed inset-0 bg-white/30 backdrop-blur-md flex items-center justify-center z-50 animate-fade-in">
-            <div className="bg-base-100 p-4 sm:p-6 rounded-xl shadow-2xl flex flex-col items-center gap-3 sm:gap-4">
-              <div className="loading loading-spinner loading-md sm:loading-lg text-primary"></div>
-              <p className="text-base sm:text-lg font-noto text-primary animate-pulse">
-                Memproses gambar...
-              </p>
+              {/* Result Card Section - Only shown after classification */}
+              {classificationResult && (
+                <div
+                  className="flex md:flex bg-white backdrop-blur-md rounded-lg shadow-lg animate-slideIn h-full"
+                  style={{
+                    animation: "slideIn 0.10s  forwards",
+                  }}
+                >
+                  <ResultCard
+                    classificationResult={classificationResult}
+                    resultRef={resultRef}
+                  />
+                </div>
+              )}
             </div>
+
+            {/* Tips Section */}
+            {!classificationResult && (
+              <div className="max-w-lg md:max-w-xl lg:max-w-2xl bg-primary/20 shadow-lg p-4 border-l-4 border-blue-600 rounded-xl">
+                <TipsSection />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+          <Loading isLoading={isLoading} />
+        </div>
+      </main>
     </>
   );
 };
