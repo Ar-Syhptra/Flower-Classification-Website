@@ -3,7 +3,7 @@
 Ini adalah dokumentasi yang menjelaskan tentang fungsi setiap file script yang ada di sini. Mari kita mulai.
 
 > [!IMPORTANT]
-> Untuk dokumentasi folder yang ada di folder machine learning ini bisa ditemukan [disini](../README.md).
+> Dokumentasi folder yang ada di folder machine learning ini bisa ditemukan di [../README.md](../README.md#penyimpanan-lokal-repository).
 
 ## `augmentation-dataset.py`
 
@@ -100,5 +100,5 @@ split_ratio = {
 }
 ```
 
-- `folders`: Daftar folder yang akan diperiksa.
+- `folders`: Daftar folder yang akan digunakan.
 - `split_ratio`: Rasio yang akan digunakan untuk pemisahan dataset.
