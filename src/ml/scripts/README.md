@@ -85,3 +85,20 @@ sites = [
 - `scrape_id`: Id unik yang digunakan untuk nama file dataset untuk menghindari nama yang sama setiap kali menjalankan script ini.
 - `queries`: Daftar query yang akan digunakan. Setiap query dapat memiliki placeholder `{name}` yang akan diubah menjadi nama kategori dari daftar kategori yang akan dicari.
 - `sites`: Daftar situs yang akan digunakan untuk pencarian.
+
+## `split-dataset.py`
+
+Script untuk memisahkan dataset menjadi 3 bagian (folder), yaitu `train`, `validation`, dan `test`. Script ini menggunakan folder `../model-datasets` untuk menyimpan dataset yang sudah dipisahkan menjadi 3 bagian sebelumnya.
+
+```python
+folders     = os.listdir('../datasets')
+
+split_ratio = {
+   'train'      : .8,
+   'validation' : .1,
+   'test'       : .1
+}
+```
+
+- `folders`: Daftar folder yang akan diperiksa.
+- `split_ratio`: Rasio yang akan digunakan untuk pemisahan dataset.

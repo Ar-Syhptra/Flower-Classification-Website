@@ -2,9 +2,6 @@
 
 Ini adalah dokumentasi yang menjelaskan tentang fungsi setiap folder yang ada di sini. Mari kita mulai.
 
-> [!IMPORTANT]
-> Untuk dokumentasi file pada folder `scripts` bisa ditemukan [disini](scripts/README.md).
-
 ## `augmentation-area`
 
 Folder yang digunakan untuk tempat augmentasi dataset. Folder ini digunakan oleh script `augmentation-dataset.py`.
@@ -42,13 +39,16 @@ datasets/
 └── README.md
 ```
 
-## `model-datasets` (?)
+## `model-datasets`
 
-Folder yang digunakan untuk tempat dataset untuk keperluan pembuatan model machine learning.
+Folder yang digunakan untuk tempat dataset yang telah dipisah menjadi 3 bagian untuk keperluan pembuatan model deep learning. Folder ini digunakan oleh script `split-dataset.py`.
 
 ```
 model-datasets/
 ├── train/
+|   └── {kategori}/
+|       └── {dataset}
+├── validation/
 |   └── {kategori}/
 |       └── {dataset}
 └── test/
@@ -57,6 +57,7 @@ model-datasets/
 ```
 
 - `train/`: Folder yang berisi dataset untuk melatih model.
+- `train/`: Folder yang berisi dataset untuk validasi model.
 - `test/`: Folder yang berisi dataset untuk menguji model.
 
 ## `models`

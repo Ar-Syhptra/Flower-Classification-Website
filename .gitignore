@@ -2,7 +2,8 @@ node_modules/
 
 src/ml/datasets/*
 !src/ml/datasets/README.md
-src/ml/augmentation-area/input/*
-src/ml/augmentation-area/output/*
+
+src/ml/augmentation-area/*/*
+src/ml/model-datasets/*/*
 
 !.gitkeep
