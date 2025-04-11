@@ -5,7 +5,7 @@ import json
 
 total_file = 0
 # batas minimum file per folder
-target     = 300
+target     = 350
 
 # --------------------------------------------------------------------------------
 
