@@ -5,13 +5,15 @@
   "private": true,
   "workspaces": [
     "src/api",
+    "src/api/services",
     "src/client"
   ],
   "scripts": {
     "start:api": "node src/api/index.js",
     "dev:api": "nodemon src/api/index.js",
+    "dev:ml": "cd src/api/services && python app.py",
     "dev:client": "cd src/client && npm run dev",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\""
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\" \"npm run dev:ml\""
   },
   "keywords": [],
   "author": "",
@@ -22,3 +24,4 @@
     "nodemon": "^3.1.9"
   }
 }
+
