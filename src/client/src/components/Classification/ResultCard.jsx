@@ -100,7 +100,7 @@ const ResultCard = ({ classificationResult, resultRef }) => {
 
             {/* Wikipedia Link */}
             <a
-              href={classificationResult.wikipedia}
+              href={`https://en.wikipedia.org/wiki/${classificationResult.wikipedia}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary transition-colors text-sm sm:text-base"
