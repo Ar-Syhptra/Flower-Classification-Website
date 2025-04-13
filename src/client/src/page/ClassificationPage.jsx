@@ -12,6 +12,7 @@ const user = localStorage.getItem("user");
 
 const ClassificationPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [classificationResult, setClassificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
@@ -30,25 +31,51 @@ const ClassificationPage = () => {
     fetchData();
   }, []);
 
+  const classifyImage = async (imageFile) => {
+    try {
+      const toBase64 = (file) =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
+        });
+      const base64Image = await toBase64(imageFile);
+      const response = await fetch("http://localhost:3200/api/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: base64Image }),
+      });
+      const data = await response.json();
+      console.log("Prediksi:", data);
+      return data;
+    } catch (err) {
+      console.error("Klasifikasi error:", err);
+      return null;
+    }
+  };
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
+      setSelectedFile(file);
       setClassificationResult(null);
     }
   };
 
   const handleRemoveImage = () => {
     setSelectedImage(null);
+    setSelectedFile(null);
     setClassificationResult(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
   };
 
-  const handleClassify = () => {
-    if (!selectedImage) {
+  const handleClassify = async () => {
+    if (!selectedFile) {
       Swal.fire({
         icon: "warning",
         title: "Oops...",
@@ -58,30 +85,38 @@ const ClassificationPage = () => {
       });
       return;
     }
-
     setIsLoading(true);
-
-    setTimeout(() => {
-      const flower = flowerData[0];
+    try {
+      const result = await classifyImage(selectedFile);
+      if (!result) throw new Error("Tidak ada hasil prediksi");
+      const flowerIndex = result.predicted_class;
+      const matchedFlower = flowerData[flowerIndex] || flowerData[0];
       setClassificationResult({
-        flowerName: flower.name,
-        probability: 0.95,
-        description: flower.description,
-        health_uses: flower.health_uses,
-        culture_uses: flower.culture_uses,
-        sunlight_tips: flower.sunlight_tips,
-        water_tips: flower.water_tips,
-        soil_tips: flower.soil_tips,
-        habitat: flower.habitat,
-        status: flower.status,
-        wikipedia: flower.wikipedia,
+        flowerName: matchedFlower.name,
+        probability: result.prediction[0][flowerIndex],
+        description: matchedFlower.description,
+        health_uses: matchedFlower.health_uses,
+        culture_uses: matchedFlower.culture_uses,
+        sunlight_tips: matchedFlower.sunlight_tips,
+        water_tips: matchedFlower.water_tips,
+        soil_tips: matchedFlower.soil_tips,
+        habitat: matchedFlower.habitat,
+        status: matchedFlower.status,
+        wikipedia: matchedFlower.wikipedia,
       });
-      setIsLoading(false);
-
       setTimeout(() => {
         smoothScrollTo(resultRef.current.offsetTop, 480);
       }, 100);
-    }, 2000);
+    } catch (error) {
+      console.error("Klasifikasi error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Gagal Klasifikasi",
+        text: "Terjadi kesalahan saat mengklasifikasi gambar.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const smoothScrollTo = (targetY, duration) => {
