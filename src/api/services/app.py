@@ -5,7 +5,6 @@ from routes.classify import classify_bp
 app = Flask(__name__)
 CORS(app)
 
-# Register Blueprint
 app.register_blueprint(classify_bp, url_prefix="/api")
 
 if __name__ == "__main__":
