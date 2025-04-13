@@ -18,7 +18,7 @@ def preprocess_image(image_data):
 def classify():
     try:
         data = request.get_json()
-        base64_str = data["image"].split(",")[1]  # remove data:image/jpeg;base64,
+        base64_str = data["image"].split(",")[1]
         image_data = base64.b64decode(base64_str)
 
         model = load_model()
