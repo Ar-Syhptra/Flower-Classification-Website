@@ -1,8 +1,6 @@
 node_modules/
 
 src/ml/datasets/*
-!src/ml/datasets/README.md
-
 src/ml/augmentation-area/*/*
 src/ml/model-datasets/*/*
 
