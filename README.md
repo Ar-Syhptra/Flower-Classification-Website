@@ -6,8 +6,8 @@ This project is a web application built with **React.js** and **Express.js**, ut
 - 🚀 **Image Classification**: Predicts the type of flower from an uploaded image.
 - 🎨 **Modern Frontend**: Built with **React.js**, **Vite**, and **Tailwind CSS** for a fast and responsive UI.
 - 🧠 **Machine Learning Model**: Uses **TensorFlow** for accurate classification.
-- 🗄️ **Backend API**: Powered by **Express.js** to handle communication between the frontend and ML model.
-- 📊 **PostgreSQL Database**: Stores classification history and flower data.
+- 🗄️ **Backend API**: Powered by **Express.js** to handle communication between the frontend.
+- 📊 **PostgreSQL Database**: Stores flower data.
 
 ## 🛠️ Tech Stack
 - **Frontend**: React.js, Vite, Tailwind CSS
@@ -44,10 +44,10 @@ This project is a web application built with **React.js** and **Express.js**, ut
    ```
 Before running this project, you need to download the `.h5` model from the following link:
 
-**[Download model.h5 (MEGA)](https://mega.nz/folder/5oIA2BzL#7tMxi_Ab0_XtpeXzFKBXtQ/file/8wZnGbQC)**
+**[Download model-3-a85-c37.h5 (MEGA)](https://mega.nz/folder/5oIA2BzL#7tMxi_Ab0_XtpeXzFKBXtQ/file/8wZnGbQC)**
 
 After downloaded, move the file to the following directory:
 
 ```bash
-src/api/services/model.h5
+src/api/services/model-3-a85-c37.h5
 ```
