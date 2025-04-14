@@ -85,7 +85,7 @@ model-datasets/
 Folder yang berisi notebook yang digunakan untuk analisa data dan pelatihan model. Setiap notebook memiliki format penamaan `notebook-{subject}-{version}-{model_name}` yang memiliki arti:
 
 - `subject`: Tujuan dari notebook tersebut.
-- `version`: Versi notebook.
+- `version` (Opsional): Versi notebook.
 - `model_name` (Opsional): Model yang dibahas.
 
 ### `scripts`
