@@ -1,0 +1,5 @@
+selenium==4.30.0
+tensorflow==2.19.0
+scikit-learn==1.6.1
+matplotlib==3.10.1
+seaborn==0.13.2

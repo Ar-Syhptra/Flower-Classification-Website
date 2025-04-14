@@ -1,1 +1,7 @@
 node_modules/
+
+src/ml/datasets/*
+src/ml/augmentation-area/*/*
+src/ml/model-datasets/*/*
+
+!.gitkeep
