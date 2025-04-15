@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:3000/api`;
+const BASE_URL = `https://api.florai.my.id/api`;
 const token = localStorage.getItem("token");
 export async function fetchFlowersData() {
   const response = await fetch(`${BASE_URL}/flowers`, {
