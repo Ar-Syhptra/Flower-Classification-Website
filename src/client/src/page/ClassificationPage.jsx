@@ -41,7 +41,7 @@ const ClassificationPage = () => {
           reader.onerror = (error) => reject(error);
         });
       const base64Image = await toBase64(imageFile);
-      const response = await fetch("https://api.florai.my.id/api/classify", {
+      const response = await fetch("https://ml.florai.my.id/api/classify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image: base64Image }),
