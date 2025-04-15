@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Logo from "../../assets/img/flower-logo.svg";
 import Button from "../Buttons/Button";
 import HamburgerMenu from "../Navbar/HamburgerMenu";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   // Fungsi navbar melayang saat scroll
@@ -47,18 +48,18 @@ function Navbar() {
 
       {/* Login dan Register Button untuk Desktop*/}
       <div className="navbar-end hidden md:flex text-center gap-1">
-        <a href="/login">
+        <Link to="/login">
           <Button
             name="Login"
             className="btn btn-primary md:btn-md lg:btn-lg  text-base-100 rounded-lg"
           />
-        </a>
-        <a href="/register">
+        </Link>
+        <Link to="/register">
           <Button
             name="Register"
             className="btn btn-outline btn-primary md:btn-md lg:btn-lg hover:text-base-100 rounded-lg"
           />
-        </a>
+        </Link>
       </div>
     </nav>
   );
