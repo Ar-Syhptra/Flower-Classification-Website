@@ -34,7 +34,6 @@ This project is a web application built with **React.js** and **Express.js**, ut
 
 3. Install dependencies with pip:
    ```bash
-   cd src/api/services
    pip install -r requirements.txt
    ```
 
