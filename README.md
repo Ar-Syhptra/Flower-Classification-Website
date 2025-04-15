@@ -41,12 +41,3 @@ This project is a web application built with **React.js** and **Express.js**, ut
    ```bash
    npm run dev
    ```
-Before running this project, you need to download the `.h5` model from the following link:
-
-**[Download model-3-a85-c37.h5 (MEGA)](https://mega.nz/folder/5oIA2BzL#7tMxi_Ab0_XtpeXzFKBXtQ/file/8wZnGbQC)**
-
-After downloaded, move the file to the following directory:
-
-```bash
-src/api/services/model-3-a85-c37.h5
-```
