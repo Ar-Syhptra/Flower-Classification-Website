@@ -6,4 +6,3 @@ src/ml/datasets/*
 src/ml/augmentation-area/*/*
 src/ml/model-datasets/*/*
 !.gitkeep
-src/api/services/*.h5
