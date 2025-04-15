@@ -1,4 +1,5 @@
 import React from "react";
+import { Waves,Sprout,Sun,Flower } from "lucide-react";
 
 const ResultCard = ({ classificationResult, resultRef }) => {
   return (
@@ -13,11 +14,11 @@ const ResultCard = ({ classificationResult, resultRef }) => {
             {/* Main Info Section */}
             <div className="bg-primary/5 rounded-xl p-4 sm:p-4 border border-primary/20 hover:bg-primary/10 transition-colors cursor-default">
               <div className="">
-                <h4 className="font-semibold text-primary mb-2 sm:mb-3 text-sm sm:text-base">
-                  {classificationResult.flowerName}
+                <h4 className="font-semibold text-primary mb-2 sm:mb-3 text-sm sm:text-base flex gap-1">
+                  <Flower/>{classificationResult.flowerName}
                 </h4>
                 <p className="text-sm md:text-lg text-primary/80">
-                  Tingkat Akurasi: {classificationResult.probability}
+                  Tingkat Akurasi: {(classificationResult.probability * 100).toFixed(2)}%
                 </p>
                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   {classificationResult.description}
@@ -52,26 +53,26 @@ const ResultCard = ({ classificationResult, resultRef }) => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                 <div className="space-y-2">
-                  <p className="font-medium text-sky-700 text-sm sm:text-base">
-                    💠 Pencahayaan
+                  <p className="font-medium text-sky-700 text-sm sm:text-base flex gap-1">
+                    <Sun /> Pencahayaan
                   </p>
                   <p className="text-sky-800 text-sm sm:text-base">
                     {classificationResult.sunlight_tips}
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <p className="font-medium text-sky-700 text-sm sm:text-base">
-                    💠 Pengairan
+                  <p className="font-medium text-sky-700 text-sm sm:text-base flex gap-1">
+                    <Waves />Pengairan
                   </p>
                   <p className="text-sky-800 text-sm sm:text-base">
                     {classificationResult.water_tips}
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <p className="font-medium text-sky-700 text-sm sm:text-base">
-                    💠 Media Tanam
+                  <p className="font-medium text-sky-700 text-sm sm:text-base flex gap-1">
+                    <Sprout/> Media Tanam
                   </p>
-                  <p className="text-sky-800 text-sm sm:text-base">
+                  <p className="text-sky-800 text-sm sm:text-base flex">
                     {classificationResult.soil_tips}
                   </p>
                 </div>
